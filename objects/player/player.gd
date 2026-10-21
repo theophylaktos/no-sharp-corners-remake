@@ -1,13 +1,15 @@
 extends DamageableObject
 
+class_name Player
+
 var direction: String = ""
 
 func _ready() -> void:
 	local = $Local
-	RoundManager.player_move_left_pressed.connect(move_left)
-	RoundManager.player_move_right_pressed.connect(move_right)
-	RoundManager.player_move_up_pressed.connect(move_up)
-	RoundManager.player_move_down_pressed.connect(move_down)
+	RoundManager.player_move_left.connect(move_left)
+	RoundManager.player_move_right.connect(move_right)
+	RoundManager.player_move_up.connect(move_up)
+	RoundManager.player_move_down.connect(move_down)
 
 func calculate_direction() -> String:
 	if tile_coordinates.y == 0 or tile_coordinates.y == 7:

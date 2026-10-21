@@ -22,6 +22,8 @@ Constants="*uid://dp6ovpl55cn8u"
 LevelManager="*uid://cdgmqaxro07df"
 Reset="*uid://c18e61ibbxl7h"
 RoundManager="*uid://bd3p1idkjrlnq"
+PlayerInputs="*uid://byvxrvxb114rb"
+Rounds="*uid://dkt1fyhwd5rnr"
 
 [display]
 

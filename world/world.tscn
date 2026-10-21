@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://cvhhrs1oj6hcn"]
 
+[ext_resource type="Script" uid="uid://gc3vnhlq2v2w" path="res://world/world.gd" id="1_4717r"]
 [ext_resource type="Texture2D" uid="uid://dntwcxptij5q1" path="res://assets/art/backgrounds/grass_bg.png" id="1_tcf2h"]
 [ext_resource type="PackedScene" uid="uid://blgs4fqwic7c" path="res://level/level.tscn" id="2_4717r"]
-[ext_resource type="PackedScene" uid="uid://b8tibli3auw72" path="res://objects/player/player.tscn" id="3_4717r"]
 
 [node name="World" type="Node2D" unique_id=2087679821]
+script = ExtResource("1_4717r")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1478213363]
 position = Vector2(55, 0)
@@ -14,5 +15,3 @@ texture = ExtResource("1_tcf2h")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=720976442]
 position = Vector2(55, 0)
-
-[node name="Player" parent="." unique_id=45695086 instance=ExtResource("3_4717r")]
