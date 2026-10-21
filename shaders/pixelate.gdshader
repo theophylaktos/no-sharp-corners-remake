@@ -1,0 +1,13 @@
+shader_type canvas_item;
+
+uniform sampler2D screen_texture: hint_screen_texture, filter_nearest;
+
+uniform int pixel_size;
+
+void fragment() {
+	vec2 texture_size_px = vec2(240.0, 135.0);
+	vec2 grid_dimension = texture_size_px / float(pixel_size);
+	vec2 pixel_uv = floor((UV * grid_dimension) + 0.5) / grid_dimension;
+	COLOR = texture(screen_texture, pixel_uv);
+}
+ 

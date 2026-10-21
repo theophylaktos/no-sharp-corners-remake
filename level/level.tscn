@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://blgs4fqwic7c"]
+
+[ext_resource type="Texture2D" uid="uid://b844x83kfl874" path="res://assets/art/ring_segments/ring_zero/r0c0.png" id="1_o0wo3"]
+[ext_resource type="Texture2D" uid="uid://d2a8eacsnsakn" path="res://assets/art/ring_segments/ring_zero/r0c1.png" id="2_kdsbj"]
+[ext_resource type="Texture2D" uid="uid://badm1i6s07jwe" path="res://assets/art/ring_segments/ring_zero/r0c2.png" id="3_ml0fe"]
+[ext_resource type="Texture2D" uid="uid://b2khgmi4rmfjx" path="res://assets/art/ring_segments/ring_zero/r0c3.png" id="4_h74y2"]
+[ext_resource type="Texture2D" uid="uid://jinfgtto2bnf" path="res://assets/art/ring_segments/ring_zero/r0c4.png" id="5_7cdnq"]
+[ext_resource type="Texture2D" uid="uid://d246vnuhe8nsw" path="res://assets/art/ring_segments/ring_zero/r0c5.png" id="6_lsj08"]
+[ext_resource type="Texture2D" uid="uid://b2jfvw0fdjh0g" path="res://assets/art/ring_segments/ring_zero/r0c6.png" id="7_u5n7q"]
+[ext_resource type="Texture2D" uid="uid://cietnbyv7yhre" path="res://assets/art/ring_segments/ring_zero/r0c7.png" id="8_qslh7"]
+[ext_resource type="Texture2D" uid="uid://cxevy2nad3jra" path="res://assets/art/ring_segments/ring_one/r1c0.png" id="9_kdj2k"]
+[ext_resource type="Texture2D" uid="uid://bmab4xyhw36gx" path="res://assets/art/ring_segments/ring_one/r1c1.png" id="10_s1aav"]
+[ext_resource type="Texture2D" uid="uid://bs7e1177dmucx" path="res://assets/art/ring_segments/ring_one/r1c2.png" id="11_xdahv"]
+[ext_resource type="Texture2D" uid="uid://c4qs7qpt0p8av" path="res://assets/art/ring_segments/ring_one/r1c3.png" id="12_krw8e"]
+[ext_resource type="Texture2D" uid="uid://byvokk82kfw4e" path="res://assets/art/ring_segments/ring_one/r1c4.png" id="13_ifo17"]
+[ext_resource type="Texture2D" uid="uid://c6pp73ueyswkp" path="res://assets/art/ring_segments/ring_one/r1c5.png" id="14_q4dhf"]
+[ext_resource type="Texture2D" uid="uid://ca4f6i7br1qvt" path="res://assets/art/ring_segments/ring_one/r1c6.png" id="15_u1dsc"]
+[ext_resource type="Texture2D" uid="uid://4wcbl7nkwqgr" path="res://assets/art/ring_segments/ring_one/r1c7.png" id="16_8yb03"]
+[ext_resource type="Texture2D" uid="uid://bbgonrl7rbr33" path="res://assets/art/ring_segments/ring_two/r2c0.png" id="17_1vdk1"]
+[ext_resource type="Texture2D" uid="uid://jxyo8a3nn0if" path="res://assets/art/ring_segments/ring_two/r2c1.png" id="18_3dv6e"]
+[ext_resource type="Texture2D" uid="uid://cyq1igfj3vuem" path="res://assets/art/ring_segments/ring_two/r2c2.png" id="19_w5qvu"]
+[ext_resource type="Texture2D" uid="uid://pejl532r14ww" path="res://assets/art/ring_segments/ring_two/r2c3.png" id="20_4vkke"]
+[ext_resource type="Texture2D" uid="uid://cncjbmt3maw6b" path="res://assets/art/ring_segments/ring_two/r2c4.png" id="21_w18mj"]
+[ext_resource type="Texture2D" uid="uid://6g0stwxgvxmr" path="res://assets/art/ring_segments/ring_two/r2c5.png" id="22_j1fdq"]
+[ext_resource type="Texture2D" uid="uid://dre2n1vuvoela" path="res://assets/art/ring_segments/ring_two/r2c6.png" id="23_bm65w"]
+[ext_resource type="Texture2D" uid="uid://rb15wpl8xhcx" path="res://assets/art/ring_segments/ring_two/r2c7.png" id="24_5002v"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7bva4"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Level" type="Node2D" unique_id=69840445]
+
+[node name="Level" type="Sprite2D" parent="." unique_id=743556046]
+texture = SubResource("ViewportTexture_7bva4")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=143136958]
+transparent_bg = true
+size = Vector2i(128, 128)
+
+[node name="Ring0" type="Node" parent="SubViewport" unique_id=518256599]
+
+[node name="Ring0Degree0" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1368087071]
+position = Vector2(64, 64)
+texture = ExtResource("1_o0wo3")
+
+[node name="Ring0Degree1" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1735523076]
+position = Vector2(64, 64)
+texture = ExtResource("2_kdsbj")
+
+[node name="Ring0Degree2" type="Sprite2D" parent="SubViewport/Ring0" unique_id=558007294]
+position = Vector2(64, 64)
+texture = ExtResource("3_ml0fe")
+
+[node name="Ring0Degree3" type="Sprite2D" parent="SubViewport/Ring0" unique_id=426908518]
+position = Vector2(64, 64)
+texture = ExtResource("4_h74y2")
+
+[node name="Ring0Degree4" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1757909207]
+position = Vector2(64, 64)
+texture = ExtResource("5_7cdnq")
+
+[node name="Ring0Degree5" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1561495068]
+position = Vector2(64, 64)
+texture = ExtResource("6_lsj08")
+
+[node name="Ring0Degree6" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1597394865]
+position = Vector2(64, 64)
+texture = ExtResource("7_u5n7q")
+
+[node name="Ring0Degree7" type="Sprite2D" parent="SubViewport/Ring0" unique_id=537744]
+position = Vector2(64, 64)
+texture = ExtResource("8_qslh7")
+
+[node name="Ring1" type="Node" parent="SubViewport" unique_id=272237991]
+
+[node name="Ring1Degree0" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1248098070]
+position = Vector2(64, 64)
+texture = ExtResource("9_kdj2k")
+
+[node name="Ring1Degree1" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1796568693]
+position = Vector2(64, 64)
+texture = ExtResource("10_s1aav")
+
+[node name="Ring1Degree2" type="Sprite2D" parent="SubViewport/Ring1" unique_id=724692225]
+position = Vector2(64, 64)
+texture = ExtResource("11_xdahv")
+
+[node name="Ring1Degree3" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1521748636]
+position = Vector2(64, 64)
+texture = ExtResource("12_krw8e")
+
+[node name="Ring1Degree4" type="Sprite2D" parent="SubViewport/Ring1" unique_id=492096880]
+position = Vector2(64, 64)
+texture = ExtResource("13_ifo17")
+
+[node name="Ring1Degree5" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1459877396]
+position = Vector2(64, 64)
+texture = ExtResource("14_q4dhf")
+
+[node name="Ring1Degree6" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1425422428]
+position = Vector2(64, 64)
+texture = ExtResource("15_u1dsc")
+
+[node name="Ring1Degree7" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1001797596]
+position = Vector2(64, 64)
+texture = ExtResource("16_8yb03")
+
+[node name="Ring2" type="Node" parent="SubViewport" unique_id=569134594]
+
+[node name="Ring2Degree0" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1436157747]
+position = Vector2(64, 64)
+texture = ExtResource("17_1vdk1")
+
+[node name="Ring2Degree1" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1199326812]
+position = Vector2(64, 64)
+texture = ExtResource("18_3dv6e")
+
+[node name="Ring2Degree2" type="Sprite2D" parent="SubViewport/Ring2" unique_id=919439572]
+position = Vector2(64, 64)
+texture = ExtResource("19_w5qvu")
+
+[node name="Ring2Degree3" type="Sprite2D" parent="SubViewport/Ring2" unique_id=510141755]
+position = Vector2(64, 64)
+texture = ExtResource("20_4vkke")
+
+[node name="Ring2Degree4" type="Sprite2D" parent="SubViewport/Ring2" unique_id=786263615]
+position = Vector2(64, 64)
+texture = ExtResource("21_w18mj")
+
+[node name="Ring2Degree5" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1742627930]
+position = Vector2(64, 64)
+texture = ExtResource("22_j1fdq")
+
+[node name="Ring2Degree6" type="Sprite2D" parent="SubViewport/Ring2" unique_id=538761285]
+position = Vector2(64, 64)
+texture = ExtResource("23_bm65w")
+
+[node name="Ring2Degree7" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1639085794]
+position = Vector2(64, 64)
+texture = ExtResource("24_5002v")

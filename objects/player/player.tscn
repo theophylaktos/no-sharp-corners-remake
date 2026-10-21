@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b8tibli3auw72"]
+
+[ext_resource type="Script" uid="uid://d8hellds5grb" path="res://objects/player/player.gd" id="1_cqmt1"]
+[ext_resource type="Texture2D" uid="uid://onov2tvup251" path="res://assets/programmer_art/goblin.png" id="2_g7ett"]
+
+[node name="Player" type="Node2D" unique_id=45695086 node_paths=PackedStringArray("local")]
+script = ExtResource("1_cqmt1")
+local = NodePath("Local")
+
+[node name="Local" type="Node2D" parent="." unique_id=316191280]
+
+[node name="Sprite2D" type="Sprite2D" parent="Local" unique_id=1688574340]
+texture = ExtResource("2_g7ett")
