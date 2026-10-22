@@ -54,10 +54,10 @@ func add_enemy(enemy_name: String):
 	match enemy_name:
 		"mushroom":
 			enemy = load("uid://do4qeckfx47bx").instantiate()
-			
+	enemy.name = enemy_name + str(Time.get_ticks_usec())
 	while (world == null):
 		await get_tree().create_timer(0.01).timeout
 	if (enemy == null):
 		return
 	world.add_child(enemy)
-	enemy.tile_coordinates = Vector2(0,0)
+	enemy.tile_coordinates = LevelManager.random_empty_segment()

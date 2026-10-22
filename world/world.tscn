@@ -8,10 +8,10 @@
 script = ExtResource("1_4717r")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1478213363]
-position = Vector2(55, 0)
+position = Vector2(55, 0.5)
 texture = ExtResource("1_tcf2h")
 
 [node name="Level" parent="." unique_id=69840445 instance=ExtResource("2_4717r")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=720976442]
-position = Vector2(55, 0)
+position = Vector2(55, 0.5)

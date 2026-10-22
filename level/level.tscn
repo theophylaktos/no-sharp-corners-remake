@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://blgs4fqwic7c"]
 
+[ext_resource type="Shader" uid="uid://c0jih7pwrhu4p" path="res://level/segment_outline.gdshader" id="1_ml0fe"]
 [ext_resource type="Texture2D" uid="uid://b844x83kfl874" path="res://assets/art/ring_segments/ring_zero/r0c0.png" id="1_o0wo3"]
 [ext_resource type="Texture2D" uid="uid://d2a8eacsnsakn" path="res://assets/art/ring_segments/ring_zero/r0c1.png" id="2_kdsbj"]
 [ext_resource type="Script" uid="uid://vs47hldofm56" path="res://level/segment.gd" id="2_ml0fe"]
@@ -26,12 +27,18 @@
 [ext_resource type="Texture2D" uid="uid://dre2n1vuvoela" path="res://assets/art/ring_segments/ring_two/r2c6.png" id="23_bm65w"]
 [ext_resource type="Texture2D" uid="uid://rb15wpl8xhcx" path="res://assets/art/ring_segments/ring_two/r2c7.png" id="24_5002v"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ml0fe"]
+shader = ExtResource("1_ml0fe")
+shader_parameter/line_color = Color(0.33333334, 0.33333334, 0.33333334, 1)
+shader_parameter/is_outlined = true
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_kdsbj"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Level" type="Node2D" unique_id=69840445]
 
 [node name="Level" type="Sprite2D" parent="." unique_id=743556046]
+material = SubResource("ShaderMaterial_ml0fe")
 texture = SubResource("ViewportTexture_kdsbj")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=143136958]
