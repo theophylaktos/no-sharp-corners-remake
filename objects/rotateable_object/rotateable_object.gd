@@ -11,15 +11,18 @@ class_name RotateableObject
 		var clamped_y: int = posmod(new_value.y, Constants.DEGREE_COUNT)
 		tile_coordinates = Vector2(clamped_x, clamped_y)
 		LevelManager.object_tile_coordinates[clamped_x][clamped_y] = self
+		
+		var start_rotation = self.rotation
+		var end_rotation = (PI / 8) + clamped_y * (PI / 4)
 		var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
 		tween.tween_method(
 			func(value: float) -> void:
-				self.rotation = lerp_angle(self.rotation, (PI / 8) + clamped_y * (PI / 4), value), 0.0, 1.0, Constants.ROTATE_TIME
+				self.rotation = lerp_angle(start_rotation, end_rotation, value), 0.0, 1.0, Constants.ROTATE_TIME
 		)
 	
 		tween.parallel().tween_method(
 		func(value: float) -> void:
-			self.local.rotation = lerp_angle(local.rotation, -1 * ((PI / 8) + clamped_y * (PI / 4)), value), 0.0, 1.0, Constants.ROTATE_TIME
+			self.local.rotation = lerp_angle(-1 * start_rotation, -1 * end_rotation, value), 0.0, 1.0, Constants.ROTATE_TIME
 		)
 		
 		tween.parallel().tween_property(self.local, "position", Vector2(Constants.DISTANCES[clamped_x], 0), Constants.ROTATE_TIME)

@@ -30,17 +30,6 @@ func rotate_ring(ring: int, direction: int):
 			_rotate_ring(ring_two, direction)
 			
 func _rotate_ring(ring: Node, direction: int):
-	pass
-	#for segment in ring.get_children():
-		#var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
-		#tween.tween_method(
-			#func(value: float) -> void:
-				#self.rotation = lerp_angle(self.rotation, (PI / 8) + clamped_y * (PI / 4), value), 0.0, 1.0, Constants.ROTATE_TIME
-		#)
-	#
-		#tween.parallel().tween_method(
-		#func(value: float) -> void:
-			#self.local.rotation = lerp_angle(local.rotation, -1 * ((PI / 8) + clamped_y * (PI / 4)), value), 0.0, 1.0, Constants.ROTATE_TIME
-		#)
-		#
-		#tween.parallel().tween_property(self.local, "position", Vector2(Constants.DISTANCES[clamped_x], 0), Constants.ROTATE_TIME)
+	print(direction)
+	for segment in ring.get_children():
+		segment.tile_coordinates = Vector2i(segment.tile_coordinates.x, segment.tile_coordinates.y + direction)
