@@ -4,10 +4,10 @@ class_name RotateableObject
 @export var local: Node2D
 
 ## X is the ring, Y is the degree
-@export var tile_coordinates = Vector2i(0,0):
+@export var tile_coordinates: Vector2i = Vector2i(-1, -1):
 	set(new_value):
-		print(self)
-		LevelManager.object_tile_coordinates[tile_coordinates.x][tile_coordinates.y] = null
+		if tile_coordinates.x >= 0 && tile_coordinates.y >= 0:
+			LevelManager.object_tile_coordinates[tile_coordinates.x][tile_coordinates.y] = null
 		var clamped_x: int = clampi(new_value.x, 0, Constants.RING_COUNT)
 		var clamped_y: int = posmod(new_value.y, Constants.DEGREE_COUNT)
 		tile_coordinates = Vector2(clamped_x, clamped_y)

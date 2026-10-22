@@ -35,9 +35,12 @@ func _player_move_down():
 		player_move_down.emit()
 
 func start_round():
-	add_player()
+	await add_player()
+	print(LevelManager.object_tile_coordinates)
+	print()
 	add_enemies()
-
+	print(LevelManager.object_tile_coordinates)
+	
 func add_player():
 	var player = load("uid://b8tibli3auw72").instantiate()
 	while (world == null):

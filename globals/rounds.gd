@@ -1,5 +1,5 @@
 extends Node
 
 @export var rounds: Dictionary[int, Array] = {
-	0: ["mushroom", "mushroom"],
+	0: ["mushroom", "mushroom", "mushroom", "mushroom", "mushroom", "mushroom", "mushroom", "mushroom", "mushroom", "mushroom"],
 }

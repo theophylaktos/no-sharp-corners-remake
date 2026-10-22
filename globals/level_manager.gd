@@ -30,12 +30,13 @@ func rotate_ring(ring: int, direction: int):
 			_rotate_ring(ring_two, direction)
 			
 func _rotate_ring(ring: Node, direction: int):
-	print(direction)
 	for segment in ring.get_children():
 		segment.tile_coordinates = Vector2i(segment.tile_coordinates.x, segment.tile_coordinates.y + direction)
 		
 func random_empty_segment() -> Vector2i:
-	var segment_coordinates = Vector2i(randi_range(0, Constants.RING_COUNT - 1), randi_range(0, Constants.DEGREE_COUNT - 1))
-	if object_tile_coordinates[segment_coordinates.x][segment_coordinates.y] == null:
-		return segment_coordinates
-	return random_empty_segment()
+	var empty_segments: Array[Vector2i]
+	for ring in object_tile_coordinates.size():
+		for degree in object_tile_coordinates[0].size():
+			if object_tile_coordinates[ring][degree] == null:
+				empty_segments.append(Vector2i(ring,degree))
+	return empty_segments[randi_range(0, empty_segments.size() - 1)]
