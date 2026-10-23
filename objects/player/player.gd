@@ -79,5 +79,4 @@ func _move_out():
 		tile_coordinates = Vector2i(tile_coordinates.x - 1, tile_coordinates.y)
 	
 func _rotate_ring(amount: int):
-	tile_coordinates = Vector2i(tile_coordinates.x, tile_coordinates.y + amount)
 	LevelManager.rotate_ring(tile_coordinates.x, amount)
