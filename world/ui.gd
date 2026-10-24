@@ -29,3 +29,8 @@ func play_sound_on_item_clicked(item: String) -> void:
 		SFX.play(SFX.Id.WOOD)
 	else:
 		SFX.play(SFX.Id.WOOD)
+
+
+func _on_pause_button_pressed() -> void:
+	PlayerInputs.accepting_input = false
+	%Settings.visible = true

@@ -25,6 +25,7 @@ RoundManager="*uid://bd3p1idkjrlnq"
 PlayerInputs="*uid://byvxrvxb114rb"
 Rounds="*uid://dkt1fyhwd5rnr"
 SFX="*uid://d1mff478o3ug3"
+GlobalSettings="*uid://dhqby8k6v1ems"
 
 [display]
 

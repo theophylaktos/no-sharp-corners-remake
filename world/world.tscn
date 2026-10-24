@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://cb47mw65ui4oa" path="res://assets/art/ui/pause_button_hover.png" id="6_ai45w"]
 [ext_resource type="Texture2D" uid="uid://bmfaeb5wwlfty" path="res://assets/art/ui/empty_wooden_frame.png" id="7_sc4t8"]
 [ext_resource type="Shader" uid="uid://c0jih7pwrhu4p" path="res://level/outline.gdshader" id="8_4papg"]
+[ext_resource type="Script" uid="uid://b4vj6dplklpri" path="res://world/settings.gd" id="10_b2suy"]
+[ext_resource type="Shader" uid="uid://cjce3iwe2baoe" path="res://world/vignette.gdshader" id="10_dqqhb"]
+[ext_resource type="Texture2D" uid="uid://cebwyqk5ioth5" path="res://assets/art/settings/settings_with_slime.png" id="10_ocfjn"]
+[ext_resource type="Texture2D" uid="uid://dxc5odiqa1lnj" path="res://assets/art/settings/settings_x.png" id="11_dqqhb"]
+[ext_resource type="Texture2D" uid="uid://ly1b8f6vhydt" path="res://assets/art/settings/settings_back.png" id="12_b2suy"]
+[ext_resource type="Theme" uid="uid://db55p8fs1nvfa" path="res://settings_theme.tres" id="13_h8lre"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ai45w"]
 shader = ExtResource("8_4papg")
@@ -24,6 +30,9 @@ shader_parameter/is_outlined = false
 shader = ExtResource("8_4papg")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/is_outlined = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7bva4"]
+shader = ExtResource("10_dqqhb")
 
 [node name="World" type="Node2D" unique_id=2087679821]
 script = ExtResource("1_4717r")
@@ -74,6 +83,85 @@ offset_right = 173.0
 offset_bottom = 35.0
 texture_normal = ExtResource("7_sc4t8")
 
+[node name="Settings" type="Control" parent="." unique_id=6689752]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -65.0
+offset_top = -67.0
+offset_right = 175.0
+offset_bottom = 68.0
+script = ExtResource("10_b2suy")
+
+[node name="Vignette" type="ColorRect" parent="Settings" unique_id=1995960939]
+material = SubResource("ShaderMaterial_7bva4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="TextureRect" parent="Settings" unique_id=1637146593]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 135.0
+texture = ExtResource("10_ocfjn")
+
+[node name="CloseButton" type="TextureButton" parent="Settings" unique_id=1159816503]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 11.0
+offset_right = 227.0
+offset_bottom = 24.0
+texture_normal = ExtResource("11_dqqhb")
+
+[node name="ExitButton" type="TextureButton" parent="Settings" unique_id=398389529]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 24.0
+offset_bottom = 24.0
+texture_normal = ExtResource("12_b2suy")
+
+[node name="MasterSlider" type="HSlider" parent="Settings" unique_id=559919969]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 45.0
+offset_right = 181.0
+offset_bottom = 61.0
+theme = ExtResource("13_h8lre")
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[node name="MusicSlider" type="HSlider" parent="Settings" unique_id=1586530514]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 67.0
+offset_right = 181.0
+offset_bottom = 83.0
+theme = ExtResource("13_h8lre")
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[node name="SFXSlider" type="HSlider" parent="Settings" unique_id=1052581929]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 89.0
+offset_right = 181.0
+offset_bottom = 105.0
+theme = ExtResource("13_h8lre")
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[connection signal="pressed" from="UI/PauseButton" to="UI" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/FirstAttack" to="UI" method="_on_first_attack_pressed"]
 [connection signal="pressed" from="UI/SecondAttack" to="UI" method="_on_second_attack_pressed"]
 [connection signal="pressed" from="UI/ThirdAttack" to="UI" method="_on_third_attack_pressed"]
+[connection signal="pressed" from="Settings/CloseButton" to="Settings" method="_on_close_button_pressed"]
+[connection signal="pressed" from="Settings/ExitButton" to="Settings" method="_on_exit_button_pressed"]

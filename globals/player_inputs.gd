@@ -14,7 +14,11 @@ signal third_attack_pressed
 
 signal debug_pressed
 
+var accepting_input: bool = true
+
 func _process(_delta: float) -> void:
+	if accepting_input == false:
+		return
 	if Input.is_action_just_pressed("left"):
 		left_pressed.emit()
 	if Input.is_action_just_pressed("right"):
