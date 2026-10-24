@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://b844x83kfl874" path="res://assets/art/ring_segments/ring_zero/r0c0.png" id="1_o0wo3"]
 [ext_resource type="Shader" uid="uid://dk1on62egjv8r" path="res://level/highlight.gdshader" id="2_h74y2"]
 [ext_resource type="Texture2D" uid="uid://d2a8eacsnsakn" path="res://assets/art/ring_segments/ring_zero/r0c1.png" id="2_kdsbj"]
-[ext_resource type="Script" uid="uid://vs47hldofm56" path="res://level/segment.gd" id="2_ml0fe"]
 [ext_resource type="Script" uid="uid://bjm5dwqxblw0r" path="res://level/ring.gd" id="3_lsj08"]
 [ext_resource type="Texture2D" uid="uid://badm1i6s07jwe" path="res://assets/art/ring_segments/ring_zero/r0c2.png" id="3_ml0fe"]
 [ext_resource type="Texture2D" uid="uid://b2khgmi4rmfjx" path="res://assets/art/ring_segments/ring_zero/r0c3.png" id="4_h74y2"]
@@ -224,42 +223,34 @@ script = ExtResource("3_lsj08")
 [node name="Ring0Degree0" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1368087071]
 material = SubResource("ShaderMaterial_h74y2")
 texture = ExtResource("1_o0wo3")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree1" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1735523076]
 material = SubResource("ShaderMaterial_7cdnq")
 texture = ExtResource("2_kdsbj")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree2" type="Sprite2D" parent="SubViewport/Ring0" unique_id=558007294]
 material = SubResource("ShaderMaterial_lsj08")
 texture = ExtResource("3_ml0fe")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree3" type="Sprite2D" parent="SubViewport/Ring0" unique_id=426908518]
 material = SubResource("ShaderMaterial_u5n7q")
 texture = ExtResource("4_h74y2")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree4" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1757909207]
 material = SubResource("ShaderMaterial_qslh7")
 texture = ExtResource("5_7cdnq")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree5" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1561495068]
 material = SubResource("ShaderMaterial_kdj2k")
 texture = ExtResource("6_lsj08")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree6" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1597394865]
 material = SubResource("ShaderMaterial_s1aav")
 texture = ExtResource("7_u5n7q")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree7" type="Sprite2D" parent="SubViewport/Ring0" unique_id=537744]
 material = SubResource("ShaderMaterial_xdahv")
 texture = ExtResource("8_qslh7")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring1" type="Node2D" parent="SubViewport" unique_id=1505714435]
 position = Vector2(64, 64)
@@ -268,42 +259,34 @@ script = ExtResource("3_lsj08")
 [node name="Ring1Degree0" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1248098070]
 material = SubResource("ShaderMaterial_krw8e")
 texture = ExtResource("9_kdj2k")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree1" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1796568693]
 material = SubResource("ShaderMaterial_ifo17")
 texture = ExtResource("10_s1aav")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree2" type="Sprite2D" parent="SubViewport/Ring1" unique_id=724692225]
 material = SubResource("ShaderMaterial_q4dhf")
 texture = ExtResource("11_xdahv")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree3" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1521748636]
 material = SubResource("ShaderMaterial_u1dsc")
 texture = ExtResource("12_krw8e")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree4" type="Sprite2D" parent="SubViewport/Ring1" unique_id=492096880]
 material = SubResource("ShaderMaterial_8yb03")
 texture = ExtResource("13_ifo17")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree5" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1459877396]
 material = SubResource("ShaderMaterial_1vdk1")
 texture = ExtResource("14_q4dhf")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree6" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1425422428]
 material = SubResource("ShaderMaterial_3dv6e")
 texture = ExtResource("15_u1dsc")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree7" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1001797596]
 material = SubResource("ShaderMaterial_w5qvu")
 texture = ExtResource("16_8yb03")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring2" type="Node2D" parent="SubViewport" unique_id=913660726]
 position = Vector2(64, 64)
@@ -312,39 +295,31 @@ script = ExtResource("3_lsj08")
 [node name="Ring2Degree0" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1436157747]
 material = SubResource("ShaderMaterial_4vkke")
 texture = ExtResource("17_1vdk1")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree1" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1199326812]
 material = SubResource("ShaderMaterial_w18mj")
 texture = ExtResource("18_3dv6e")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree2" type="Sprite2D" parent="SubViewport/Ring2" unique_id=919439572]
 material = SubResource("ShaderMaterial_j1fdq")
 texture = ExtResource("19_w5qvu")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree3" type="Sprite2D" parent="SubViewport/Ring2" unique_id=510141755]
 material = SubResource("ShaderMaterial_bm65w")
 texture = ExtResource("20_4vkke")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree4" type="Sprite2D" parent="SubViewport/Ring2" unique_id=786263615]
 material = SubResource("ShaderMaterial_5002v")
 texture = ExtResource("21_w18mj")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree5" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1742627930]
 material = SubResource("ShaderMaterial_j88iw")
 texture = ExtResource("22_j1fdq")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree6" type="Sprite2D" parent="SubViewport/Ring2" unique_id=538761285]
 material = SubResource("ShaderMaterial_3xl46")
 texture = ExtResource("23_bm65w")
-script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree7" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1639085794]
 material = SubResource("ShaderMaterial_5xilp")
 texture = ExtResource("24_5002v")
-script = ExtResource("2_ml0fe")

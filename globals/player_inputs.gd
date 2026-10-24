@@ -4,7 +4,7 @@ signal left_pressed
 signal right_pressed
 signal up_pressed
 signal down_pressed
-
+signal debug_pressed
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("left"):
@@ -20,4 +20,5 @@ func _process(delta: float) -> void:
 		print(LevelManager.object_tile_coordinates[0])
 		print(LevelManager.object_tile_coordinates[1])
 		print(LevelManager.object_tile_coordinates[2])
-		print()
+		print() 
+		debug_pressed.emit()

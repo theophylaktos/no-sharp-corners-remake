@@ -30,6 +30,30 @@ func rotate_ring(ring: int, direction: int):
 			
 func _rotate_segments(ring: Node2D, direction: int):
 		ring.ring_rotation += direction
+		
+		var ring_number: int
+		match ring:
+			ring_zero:
+				ring_number = 0
+			ring_one:
+				ring_number = 1
+			ring_two:
+				ring_number = 2
+		
+		if direction > 0:
+			var temp: Node2D = segments[ring_number][Constants.DEGREE_SIZE]
+			for i in range(Constants.DEGREE_SIZE - 1, -1, -1):
+				if segments[ring_number][i] != null:
+					segments[ring_number][i + 1] = segments[ring_number][i]
+			if temp != null:
+				segments[ring_number][0] = temp
+		if direction < 0:
+			var temp: Node2D = segments[ring_number][0]
+			for i in range(1, Constants.DEGREE_SIZE + 1):
+				if segments[ring_number][i] != null:
+					segments[ring_number][i - 1] = segments[ring_number][i]
+			if temp != null:
+				segments[ring_number][Constants.DEGREE_SIZE] = temp
 	
 func _rotate_objects(ring: int, direction: int):
 	if direction > 0:
@@ -57,4 +81,17 @@ func random_empty_segment() -> Vector2i:
 
 func enable_enemy_attack_segment(ring: int, degree: int):
 	var material: ShaderMaterial = segments[ring][degree].get_material()
+	material.set_shader_parameter("enemy_attack_enabled", true)
+
+func enable_player_attack_segment(ring: int, degree: int):
+	var material: ShaderMaterial = segments[ring][degree].get_material()
 	material.set_shader_parameter("player_attack_enabled", true)
+	
+func clear_all_player_attack_segments():
+	for ring in segments.size():
+		for degree in segments[0].size():
+			clear_player_attack_segment(ring, degree)
+	
+func clear_player_attack_segment(ring: int, degree: int):
+	var material: ShaderMaterial = segments[ring][degree].get_material()
+	material.set_shader_parameter("player_attack_enabled", false)

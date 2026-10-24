@@ -10,12 +10,14 @@ signal player_move_left
 signal player_move_right
 signal player_move_up
 signal player_move_down
+signal debug_pressed
 
 func _ready() -> void:
 	PlayerInputs.left_pressed.connect(_player_move_left)
 	PlayerInputs.right_pressed.connect(_player_move_right)
 	PlayerInputs.up_pressed.connect(_player_move_up)
 	PlayerInputs.down_pressed.connect(_player_move_down)
+	PlayerInputs.debug_pressed.connect(_debug_pressed)
 	start_round()
 	
 func _player_move_left():
@@ -33,7 +35,9 @@ func _player_move_up():
 func _player_move_down():
 	if phase == "player_move":
 		player_move_down.emit()
-
+		
+func _debug_pressed():
+	debug_pressed.emit()
 func start_round():
 	await add_player()
 	add_enemies()
