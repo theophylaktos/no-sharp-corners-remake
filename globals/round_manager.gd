@@ -12,6 +12,8 @@ var attacks_max: int = 1
 var moves_left: int = moves_max
 var attacks_left: int = attacks_max
 
+var attacks: Array[String] = ["attack", "", ""]
+
 signal player_move_left
 signal player_move_right
 signal player_move_up
@@ -29,6 +31,11 @@ func _ready() -> void:
 	PlayerInputs.right_pressed.connect(_player_move_right)
 	PlayerInputs.up_pressed.connect(_player_move_up)
 	PlayerInputs.down_pressed.connect(_player_move_down)
+	
+	PlayerInputs.first_attack_pressed.connect(_equip_weapon, 0)
+	PlayerInputs.second_attack_pressed.connect(_equip_weapon, 1)
+	PlayerInputs.third_attack_pressed.connect(_equip_weapon, 2)
+	
 	PlayerInputs.debug_pressed.connect(_debug_pressed)
 	start_round()
 	
@@ -87,7 +94,7 @@ func add_player():
 func add_enemies():
 	for enemy in Rounds.rounds[current_round]:
 		add_enemy(enemy)
-		
+	
 func add_enemy(enemy_name: String):
 	var enemy: Node2D
 	match enemy_name:
@@ -100,3 +107,6 @@ func add_enemy(enemy_name: String):
 		return
 	world.add_child(enemy)
 	enemy.tile_coordinates = LevelManager.random_empty_segment()
+	
+func _equip_weapon(slot: int):
+	print(slot)

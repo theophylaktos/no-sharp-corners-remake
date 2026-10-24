@@ -4,9 +4,17 @@ signal left_pressed
 signal right_pressed
 signal up_pressed
 signal down_pressed
+
+@warning_ignore("unused_signal")
+signal first_attack_pressed
+@warning_ignore("unused_signal")
+signal second_attack_pressed
+@warning_ignore("unused_signal")
+signal third_attack_pressed
+
 signal debug_pressed
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("left"):
 		left_pressed.emit()
 	if Input.is_action_just_pressed("right"):
