@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://blgs4fqwic7c"]
 
+[ext_resource type="Script" uid="uid://di0palodg0v5s" path="res://level/level.gd" id="1_7cdnq"]
 [ext_resource type="Shader" uid="uid://c0jih7pwrhu4p" path="res://level/segment_outline.gdshader" id="1_ml0fe"]
 [ext_resource type="Texture2D" uid="uid://b844x83kfl874" path="res://assets/art/ring_segments/ring_zero/r0c0.png" id="1_o0wo3"]
+[ext_resource type="Shader" uid="uid://dk1on62egjv8r" path="res://level/highlight.gdshader" id="2_h74y2"]
 [ext_resource type="Texture2D" uid="uid://d2a8eacsnsakn" path="res://assets/art/ring_segments/ring_zero/r0c1.png" id="2_kdsbj"]
 [ext_resource type="Script" uid="uid://vs47hldofm56" path="res://level/segment.gd" id="2_ml0fe"]
+[ext_resource type="Script" uid="uid://bjm5dwqxblw0r" path="res://level/ring.gd" id="3_lsj08"]
 [ext_resource type="Texture2D" uid="uid://badm1i6s07jwe" path="res://assets/art/ring_segments/ring_zero/r0c2.png" id="3_ml0fe"]
 [ext_resource type="Texture2D" uid="uid://b2khgmi4rmfjx" path="res://assets/art/ring_segments/ring_zero/r0c3.png" id="4_h74y2"]
 [ext_resource type="Texture2D" uid="uid://jinfgtto2bnf" path="res://assets/art/ring_segments/ring_zero/r0c4.png" id="5_7cdnq"]
@@ -35,7 +38,176 @@ shader_parameter/is_outlined = true
 [sub_resource type="ViewportTexture" id="ViewportTexture_kdsbj"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h74y2"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7cdnq"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsj08"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5n7q"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qslh7"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdj2k"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1aav"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdahv"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_krw8e"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ifo17"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4dhf"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u1dsc"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8yb03"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1vdk1"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dv6e"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5qvu"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4vkke"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w18mj"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1fdq"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bm65w"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5002v"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j88iw"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3xl46"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xilp"]
+shader = ExtResource("2_h74y2")
+shader_parameter/player_attack_enabled = false
+shader_parameter/enemy_attack_enabled = false
+shader_parameter/max_red = 1.0
+shader_parameter/max_green = 1.0
+
 [node name="Level" type="Node2D" unique_id=69840445]
+script = ExtResource("1_7cdnq")
 
 [node name="Level" type="Sprite2D" parent="." unique_id=743556046]
 material = SubResource("ShaderMaterial_ml0fe")
@@ -45,128 +217,134 @@ texture = SubResource("ViewportTexture_kdsbj")
 transparent_bg = true
 size = Vector2i(128, 128)
 
-[node name="Ring0" type="Node" parent="SubViewport" unique_id=518256599]
+[node name="Ring0" type="Node2D" parent="SubViewport" unique_id=198019477]
+position = Vector2(64, 64)
+script = ExtResource("3_lsj08")
 
 [node name="Ring0Degree0" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1368087071]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_h74y2")
 texture = ExtResource("1_o0wo3")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree1" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1735523076]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_7cdnq")
 texture = ExtResource("2_kdsbj")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree2" type="Sprite2D" parent="SubViewport/Ring0" unique_id=558007294]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_lsj08")
 texture = ExtResource("3_ml0fe")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree3" type="Sprite2D" parent="SubViewport/Ring0" unique_id=426908518]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_u5n7q")
 texture = ExtResource("4_h74y2")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree4" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1757909207]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_qslh7")
 texture = ExtResource("5_7cdnq")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree5" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1561495068]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_kdj2k")
 texture = ExtResource("6_lsj08")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree6" type="Sprite2D" parent="SubViewport/Ring0" unique_id=1597394865]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_s1aav")
 texture = ExtResource("7_u5n7q")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring0Degree7" type="Sprite2D" parent="SubViewport/Ring0" unique_id=537744]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_xdahv")
 texture = ExtResource("8_qslh7")
 script = ExtResource("2_ml0fe")
 
-[node name="Ring1" type="Node" parent="SubViewport" unique_id=272237991]
+[node name="Ring1" type="Node2D" parent="SubViewport" unique_id=1505714435]
+position = Vector2(64, 64)
+script = ExtResource("3_lsj08")
 
 [node name="Ring1Degree0" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1248098070]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_krw8e")
 texture = ExtResource("9_kdj2k")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree1" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1796568693]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_ifo17")
 texture = ExtResource("10_s1aav")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree2" type="Sprite2D" parent="SubViewport/Ring1" unique_id=724692225]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_q4dhf")
 texture = ExtResource("11_xdahv")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree3" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1521748636]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_u1dsc")
 texture = ExtResource("12_krw8e")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree4" type="Sprite2D" parent="SubViewport/Ring1" unique_id=492096880]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_8yb03")
 texture = ExtResource("13_ifo17")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree5" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1459877396]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_1vdk1")
 texture = ExtResource("14_q4dhf")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree6" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1425422428]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_3dv6e")
 texture = ExtResource("15_u1dsc")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring1Degree7" type="Sprite2D" parent="SubViewport/Ring1" unique_id=1001797596]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_w5qvu")
 texture = ExtResource("16_8yb03")
 script = ExtResource("2_ml0fe")
 
-[node name="Ring2" type="Node" parent="SubViewport" unique_id=569134594]
+[node name="Ring2" type="Node2D" parent="SubViewport" unique_id=913660726]
+position = Vector2(64, 64)
+script = ExtResource("3_lsj08")
 
 [node name="Ring2Degree0" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1436157747]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_4vkke")
 texture = ExtResource("17_1vdk1")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree1" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1199326812]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_w18mj")
 texture = ExtResource("18_3dv6e")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree2" type="Sprite2D" parent="SubViewport/Ring2" unique_id=919439572]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_j1fdq")
 texture = ExtResource("19_w5qvu")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree3" type="Sprite2D" parent="SubViewport/Ring2" unique_id=510141755]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_bm65w")
 texture = ExtResource("20_4vkke")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree4" type="Sprite2D" parent="SubViewport/Ring2" unique_id=786263615]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_5002v")
 texture = ExtResource("21_w18mj")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree5" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1742627930]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_j88iw")
 texture = ExtResource("22_j1fdq")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree6" type="Sprite2D" parent="SubViewport/Ring2" unique_id=538761285]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_3xl46")
 texture = ExtResource("23_bm65w")
 script = ExtResource("2_ml0fe")
 
 [node name="Ring2Degree7" type="Sprite2D" parent="SubViewport/Ring2" unique_id=1639085794]
-position = Vector2(64, 64)
+material = SubResource("ShaderMaterial_5xilp")
 texture = ExtResource("24_5002v")
 script = ExtResource("2_ml0fe")

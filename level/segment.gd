@@ -1,9 +1,13 @@
 extends Sprite2D
 
-@export var tile_coordinates = Vector2i(0,0):
+@export var tile_coordinates = Vector2i(-1,-1):
 	set(new_value):
-		tile_coordinates = new_value
-		var clamped_y: int = posmod(new_value.y, Constants.DEGREE_SIZE)
+		if tile_coordinates.x >= 0 && tile_coordinates.y >= 0 && LevelManager.segments[tile_coordinates.x][tile_coordinates.y] == self:
+			LevelManager.segments[tile_coordinates.x][tile_coordinates.y] = null
+		var clamped_y: int = posmod(new_value.y, Constants.DEGREE_SIZE + 1)
+		tile_coordinates = Vector2i(new_value.x, clamped_y)
+		LevelManager.segments[new_value.x][clamped_y] = self
+		
 		var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
 		var start_rotation = self.rotation
 		var end_rotation = clamped_y * (PI / 4)
