@@ -28,6 +28,8 @@ signal player_select_down
 
 signal debug_pressed
 
+signal equipped_weapon_changed
+
 func _ready() -> void:
 	PlayerInputs.left_pressed.connect(_player_move_left)
 	PlayerInputs.right_pressed.connect(_player_move_right)
@@ -37,6 +39,9 @@ func _ready() -> void:
 	PlayerInputs.first_attack_pressed.connect(func(): _equip_weapon(0))
 	PlayerInputs.second_attack_pressed.connect(func(): _equip_weapon(1))
 	PlayerInputs.third_attack_pressed.connect(func(): _equip_weapon(2))
+	
+	PlayerInputs.select_left_pressed.connect(func(): _equip_weapon(attacks.find(selected_attack) - 1))
+	PlayerInputs.select_right_pressed.connect(func(): _equip_weapon(attacks.find(selected_attack) + 1))
 	
 	PlayerInputs.debug_pressed.connect(_debug_pressed)
 	start_round()
@@ -70,7 +75,6 @@ func _player_move_down():
 	
 func decrease_moves():
 	moves_left -= 1
-	print(moves_left)
 	if moves_left == 0:
 		phase = "player_attack"
 
@@ -108,4 +112,5 @@ func add_enemy(enemy_name: String):
 	enemy.tile_coordinates = LevelManager.random_empty_segment()
 	
 func _equip_weapon(slot: int):
-	selected_attack = attacks[slot]
+	equipped_weapon_changed.emit()
+	selected_attack = attacks[clampi(slot, 0, 2)]

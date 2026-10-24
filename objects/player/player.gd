@@ -97,6 +97,7 @@ func _move_out():
 func _rotate_ring(amount: int):
 	SFX.play(SFX.Id.ROCK)
 	LevelManager.rotate_ring(tile_coordinates.x, amount)
+	RoundManager.decrease_moves() 
 	
 func select_left():
 	selected_direction = "A"
@@ -115,7 +116,6 @@ func select_down():
 	toggle()
 func toggle():
 	LevelManager.clear_all_player_attack_segments()
-	print(RoundManager.selected_attack)
 	for i in AttackPatterns.attack_patterns[RoundManager.selected_attack].size():
 		var x = AttackPatterns.attack_patterns[RoundManager.selected_attack][i].x
 		var y = AttackPatterns.attack_patterns[RoundManager.selected_attack][i].y

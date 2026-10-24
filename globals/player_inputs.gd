@@ -5,6 +5,9 @@ signal right_pressed
 signal up_pressed
 signal down_pressed
 
+signal select_left_pressed
+signal select_right_pressed
+
 @warning_ignore("unused_signal")
 signal first_attack_pressed
 @warning_ignore("unused_signal")
@@ -27,6 +30,11 @@ func _process(_delta: float) -> void:
 		up_pressed.emit()
 	if Input.is_action_just_pressed("down"):
 		down_pressed.emit()
+	if Input.is_action_just_pressed("select_left"):
+		select_left_pressed.emit()
+	if Input.is_action_just_pressed("select_right"):
+		select_right_pressed.emit()
+	
 	if Input.is_action_just_pressed("debug"):
 		print()
 		print(LevelManager.object_tile_coordinates[0])
