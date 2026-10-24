@@ -6,10 +6,22 @@ var current_round: int = 0
 
 @export var phase: String = "player_move"
 
+var moves_max: int = 3
+var attacks_max: int = 1
+
+var moves_left: int = moves_max
+var attacks_left: int = attacks_max
+
 signal player_move_left
 signal player_move_right
 signal player_move_up
 signal player_move_down
+
+signal player_select_left
+signal player_select_right
+signal player_select_up
+signal player_select_down
+
 signal debug_pressed
 
 func _ready() -> void:
@@ -20,24 +32,47 @@ func _ready() -> void:
 	PlayerInputs.debug_pressed.connect(_debug_pressed)
 	start_round()
 	
+func _debug_pressed():
+	debug_pressed.emit()
+	
 func _player_move_left():
 	if phase == "player_move":
+		decrease_moves()
 		player_move_left.emit()
+	if phase == "player_attack":
+		player_select_left.emit()
 		
 func _player_move_right():
 	if phase == "player_move":
+		decrease_moves()
 		player_move_right.emit()
+	if phase == "player_attack":
+		player_select_right.emit()
 		
 func _player_move_up():
 	if phase == "player_move":
+		decrease_moves()
 		player_move_up.emit()
+	if phase == "player_attack":
+		player_select_up.emit()
 		
 func _player_move_down():
 	if phase == "player_move":
+		decrease_moves()
 		player_move_down.emit()
-		
-func _debug_pressed():
-	debug_pressed.emit()
+	if phase == "player_attack":
+		player_select_down.emit()
+	
+func decrease_moves():
+	moves_left -= 1
+	if moves_left == 0:
+		phase = "player_attack"
+
+func decrease_attacks():
+	attacks_left -= 1
+	if attacks_left == 0:
+		phase = "player_move"
+
 func start_round():
 	await add_player()
 	add_enemies()
