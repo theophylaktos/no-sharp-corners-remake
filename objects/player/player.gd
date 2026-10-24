@@ -6,8 +6,6 @@ var direction: String = ""
 
 var selected_direction: String = "W"
 
-var selected_attack: String = "attack"
-
 func _ready() -> void:
 	local = $Local
 	RoundManager.player_move_left.connect(move_left)
@@ -84,6 +82,7 @@ func _move_in():
 	if tile_coordinates.x + 1 <= 2:
 		if LevelManager.object_tile_coordinates[tile_coordinates.x + 1][tile_coordinates.y] != null:
 			return
+		RoundManager.decrease_moves()
 		SFX.play(SFX.Id.SLIME)
 		tile_coordinates = Vector2i(tile_coordinates.x + 1, tile_coordinates.y)
 	
@@ -91,6 +90,7 @@ func _move_out():
 	if tile_coordinates.x - 1 >= 0:
 		if LevelManager.object_tile_coordinates[tile_coordinates.x - 1][tile_coordinates.y] != null:
 			return
+		RoundManager.decrease_moves()
 		SFX.play(SFX.Id.SLIME)
 		tile_coordinates = Vector2i(tile_coordinates.x - 1, tile_coordinates.y)
 	
@@ -115,10 +115,10 @@ func select_down():
 	toggle()
 func toggle():
 	LevelManager.clear_all_player_attack_segments()
-	
-	for i in AttackPatterns.attack_patterns[selected_attack].size():
-		var x = AttackPatterns.attack_patterns[selected_attack][i].x
-		var y = AttackPatterns.attack_patterns[selected_attack][i].y
+	print(RoundManager.selected_attack)
+	for i in AttackPatterns.attack_patterns[RoundManager.selected_attack].size():
+		var x = AttackPatterns.attack_patterns[RoundManager.selected_attack][i].x
+		var y = AttackPatterns.attack_patterns[RoundManager.selected_attack][i].y
 		
 		var faces: Dictionary[String, Vector2] = {
 			"Forward": Vector2i(tile_coordinates.x, tile_coordinates.y) + Vector2i(x, y),

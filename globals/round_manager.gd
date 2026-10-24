@@ -14,6 +14,8 @@ var attacks_left: int = attacks_max
 
 var attacks: Array[String] = ["attack", "", ""]
 
+var selected_attack = attacks[0]
+
 signal player_move_left
 signal player_move_right
 signal player_move_up
@@ -32,9 +34,9 @@ func _ready() -> void:
 	PlayerInputs.up_pressed.connect(_player_move_up)
 	PlayerInputs.down_pressed.connect(_player_move_down)
 	
-	PlayerInputs.first_attack_pressed.connect(_equip_weapon, 0)
-	PlayerInputs.second_attack_pressed.connect(_equip_weapon, 1)
-	PlayerInputs.third_attack_pressed.connect(_equip_weapon, 2)
+	PlayerInputs.first_attack_pressed.connect(func(): _equip_weapon(0))
+	PlayerInputs.second_attack_pressed.connect(func(): _equip_weapon(1))
+	PlayerInputs.third_attack_pressed.connect(func(): _equip_weapon(2))
 	
 	PlayerInputs.debug_pressed.connect(_debug_pressed)
 	start_round()
@@ -44,34 +46,31 @@ func _debug_pressed():
 	
 func _player_move_left():
 	if phase == "player_move":
-		decrease_moves()
 		player_move_left.emit()
 	if phase == "player_attack":
 		player_select_left.emit()
 		
 func _player_move_right():
 	if phase == "player_move":
-		decrease_moves()
 		player_move_right.emit()
 	if phase == "player_attack":
 		player_select_right.emit()
 		
 func _player_move_up():
 	if phase == "player_move":
-		decrease_moves()
 		player_move_up.emit()
 	if phase == "player_attack":
 		player_select_up.emit()
 		
 func _player_move_down():
 	if phase == "player_move":
-		decrease_moves()
 		player_move_down.emit()
 	if phase == "player_attack":
 		player_select_down.emit()
 	
 func decrease_moves():
 	moves_left -= 1
+	print(moves_left)
 	if moves_left == 0:
 		phase = "player_attack"
 
@@ -109,4 +108,4 @@ func add_enemy(enemy_name: String):
 	enemy.tile_coordinates = LevelManager.random_empty_segment()
 	
 func _equip_weapon(slot: int):
-	print(slot)
+	selected_attack = attacks[slot]

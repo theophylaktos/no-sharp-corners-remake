@@ -2,14 +2,14 @@ extends Node
 
 func _on_first_attack_pressed() -> void:
 	play_sound_on_item_clicked(RoundManager.attacks[0])
-	PlayerInputs.second_attack_pressed.emit()
+	PlayerInputs.first_attack_pressed.emit()
 	%FirstAttack.material.set_shader_parameter("is_outlined", true)
 	%SecondAttack.material.set_shader_parameter("is_outlined", false)
 	%ThirdAttack.material.set_shader_parameter("is_outlined", false)
 
 func _on_second_attack_pressed() -> void:
 	play_sound_on_item_clicked(RoundManager.attacks[1])
-	PlayerInputs.first_attack_pressed.emit()
+	PlayerInputs.second_attack_pressed.emit()
 	%FirstAttack.material.set_shader_parameter("is_outlined", false)
 	%SecondAttack.material.set_shader_parameter("is_outlined", true)
 	%ThirdAttack.material.set_shader_parameter("is_outlined", false)
