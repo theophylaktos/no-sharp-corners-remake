@@ -34,20 +34,20 @@ func _rotate_segments(ring: Node, direction: int):
 		
 func _rotate_objects(ring: int, direction: int):
 	if direction > 0:
-		var temp: Node = object_tile_coordinates[ring][Constants.DEGREE_SIZE]
+		var temp: Node2D = object_tile_coordinates[ring][Constants.DEGREE_SIZE]
+		print(temp)
 		for i in range(Constants.DEGREE_SIZE - 1, -1, -1):
 			if object_tile_coordinates[ring][i] != null:
 				object_tile_coordinates[ring][i].tile_coordinates = Vector2i(ring, i + 1)
 		if temp != null:
 			temp.tile_coordinates = Vector2i(ring, 0)
 	if direction < 0:
-		var temp: Node = object_tile_coordinates[ring][0]
+		var temp: Node2D = object_tile_coordinates[ring][0]
 		for i in range(1, Constants.DEGREE_SIZE + 1):
 			if object_tile_coordinates[ring][i] != null:
 				object_tile_coordinates[ring][i].tile_coordinates = Vector2i(ring, i - 1)
 		if temp != null:
 			temp.tile_coordinates = Vector2i(ring, Constants.DEGREE_SIZE)
-		
 func random_empty_segment() -> Vector2i:
 	var empty_segments: Array[Vector2i]
 	for ring in object_tile_coordinates.size():

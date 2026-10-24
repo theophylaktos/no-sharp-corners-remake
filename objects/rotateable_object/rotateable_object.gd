@@ -6,7 +6,7 @@ class_name RotateableObject
 ## X is the ring, Y is the degree
 @export var tile_coordinates: Vector2i = Vector2i(-1, -1):
 	set(new_value):
-		if tile_coordinates.x >= 0 && tile_coordinates.y >= 0:
+		if tile_coordinates.x >= 0 && tile_coordinates.y >= 0 && LevelManager.object_tile_coordinates[tile_coordinates.x][tile_coordinates.y] == self:
 			LevelManager.object_tile_coordinates[tile_coordinates.x][tile_coordinates.y] = null
 		var clamped_x: int = clampi(new_value.x, 0, Constants.RING_SIZE)
 		var clamped_y: int = posmod(new_value.y, Constants.DEGREE_SIZE + 1)
