@@ -15,3 +15,9 @@ func _process(delta: float) -> void:
 		up_pressed.emit()
 	if Input.is_action_just_pressed("down"):
 		down_pressed.emit()
+	if Input.is_action_just_pressed("debug"):
+		print()
+		print(LevelManager.object_tile_coordinates[0])
+		print(LevelManager.object_tile_coordinates[1])
+		print(LevelManager.object_tile_coordinates[2])
+		print()

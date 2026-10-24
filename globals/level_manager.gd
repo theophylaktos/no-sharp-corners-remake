@@ -16,12 +16,6 @@ var segments: Array[Array] = [
 	[null, null, null, null, null, null, null, null],
 ]
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug"):
-		print()
-		print(object_tile_coordinates)
-		print()
-
 func rotate_ring(ring: int, direction: int):
 	match ring:
 		0:
@@ -39,25 +33,21 @@ func _rotate_segments(ring: Node, direction: int):
 		segment.tile_coordinates = Vector2i(segment.tile_coordinates.x, segment.tile_coordinates.y + direction)
 		
 func _rotate_objects(ring: int, direction: int):
-	
-	var size: int = object_tile_coordinates[ring].size()
-	
 	if direction > 0:
-		var temp: Node = object_tile_coordinates[ring][size - 1]
-		for i in range(size - 1, 0, -1):
-			object_tile_coordinates[ring][i] = object_tile_coordinates[ring][i - 1]
-		object_tile_coordinates[ring][0] = temp
-	elif direction < 0:
+		var temp: Node = object_tile_coordinates[ring][Constants.DEGREE_SIZE]
+		for i in range(Constants.DEGREE_SIZE - 1, -1, -1):
+			if object_tile_coordinates[ring][i] != null:
+				object_tile_coordinates[ring][i].tile_coordinates = Vector2i(ring, i + 1)
+		if temp != null:
+			temp.tile_coordinates = Vector2i(ring, 0)
+	if direction < 0:
 		var temp: Node = object_tile_coordinates[ring][0]
-		for i in range(0, object_tile_coordinates[0].size() - 1):
-			object_tile_coordinates[ring][i] = object_tile_coordinates[ring][i + 1]
-		object_tile_coordinates[ring][-1] = temp
+		for i in range(1, Constants.DEGREE_SIZE + 1):
+			if object_tile_coordinates[ring][i] != null:
+				object_tile_coordinates[ring][i].tile_coordinates = Vector2i(ring, i - 1)
+		if temp != null:
+			temp.tile_coordinates = Vector2i(ring, Constants.DEGREE_SIZE)
 		
-	for i in range(size):
-		if object_tile_coordinates[ring][i] != null:
-			object_tile_coordinates[ring][i].tile_coordinates = Vector2i(ring, i - 1)
-			object_tile_coordinates[ring][i].tile_coordinates = Vector2i(ring, i)
-			
 func random_empty_segment() -> Vector2i:
 	var empty_segments: Array[Vector2i]
 	for ring in object_tile_coordinates.size():

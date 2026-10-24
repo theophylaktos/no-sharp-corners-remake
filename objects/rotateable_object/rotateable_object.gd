@@ -8,9 +8,9 @@ class_name RotateableObject
 	set(new_value):
 		if tile_coordinates.x >= 0 && tile_coordinates.y >= 0:
 			LevelManager.object_tile_coordinates[tile_coordinates.x][tile_coordinates.y] = null
-		var clamped_x: int = clampi(new_value.x, 0, Constants.RING_COUNT)
-		var clamped_y: int = posmod(new_value.y, Constants.DEGREE_COUNT)
-		tile_coordinates = Vector2(clamped_x, clamped_y)
+		var clamped_x: int = clampi(new_value.x, 0, Constants.RING_SIZE)
+		var clamped_y: int = posmod(new_value.y, Constants.DEGREE_SIZE + 1)
+		tile_coordinates = Vector2i(clamped_x, clamped_y)
 		LevelManager.object_tile_coordinates[clamped_x][clamped_y] = self
 		
 		var start_rotation = self.rotation

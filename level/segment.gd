@@ -3,7 +3,7 @@ extends Sprite2D
 @export var tile_coordinates = Vector2i(0,0):
 	set(new_value):
 		tile_coordinates = new_value
-		var clamped_y: int = posmod(new_value.y, Constants.DEGREE_COUNT)
+		var clamped_y: int = posmod(new_value.y, Constants.DEGREE_SIZE)
 		var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)
 		var start_rotation = self.rotation
 		var end_rotation = clamped_y * (PI / 4)
