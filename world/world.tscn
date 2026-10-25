@@ -86,6 +86,7 @@ texture_normal = ExtResource("7_sc4t8")
 
 [node name="Settings" type="Control" parent="." unique_id=6689752]
 unique_name_in_owner = true
+visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
