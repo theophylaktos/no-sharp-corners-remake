@@ -12,7 +12,7 @@ var attacks_max: int = 1
 var moves_left: int = moves_max
 var attacks_left: int = attacks_max
 
-var attacks: Array[String] = ["attack", "", ""]
+var attacks: Array[String] = ["attack", "attack2", ""]
 
 var selected_attack: int = 0
 
@@ -112,5 +112,6 @@ func add_enemy(enemy_name: String):
 	enemy.tile_coordinates = LevelManager.random_empty_segment()
 	
 func _select_weapon(slot: int):
-	selected_attack = clampi(slot, 0, 2)
-	selected_weapon_changed.emit()
+	if phase == "player_attack":
+		selected_attack = clampi(slot, 0, 2)
+		selected_weapon_changed.emit()

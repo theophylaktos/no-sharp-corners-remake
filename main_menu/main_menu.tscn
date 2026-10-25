@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://d4bay6qjpeqgb"]
+
+[ext_resource type="Texture2D" uid="uid://w1j6qk5alwtr" path="res://assets/art/backgrounds/pause_screen.png" id="1_6tl50"]
+[ext_resource type="Texture2D" uid="uid://d1sy3x4x5ehay" path="res://assets/art/ui/play_button_press.png" id="2_t6bnd"]
+[ext_resource type="Texture2D" uid="uid://d1rmovu548lyp" path="res://assets/art/ui/play_button.png" id="3_ia84y"]
+[ext_resource type="Texture2D" uid="uid://nngff4e483na" path="res://assets/art/ui/play_button_hover.png" id="4_6at21"]
+[ext_resource type="Texture2D" uid="uid://dommt436ggx45" path="res://assets/art/ui/settings_button.png" id="5_og6xe"]
+[ext_resource type="Texture2D" uid="uid://63sqk3log45b" path="res://assets/art/ui/settings_button_hover.png" id="6_mvfl2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvn4f"]
+atlas = ExtResource("1_6tl50")
+region = Rect2(0, 0, 240, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1omr"]
+atlas = ExtResource("1_6tl50")
+region = Rect2(240, 0, 240, 135)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7bva4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvn4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1omr")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Menu" type="Control" unique_id=874558947]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="AnimatedSprite2D" parent="." unique_id=68475231]
+position = Vector2(120, 67.5)
+sprite_frames = SubResource("SpriteFrames_7bva4")
+
+[node name="PlayButton" type="TextureButton" parent="." unique_id=87932507]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 38.0
+offset_right = 228.0
+offset_bottom = 72.0
+texture_normal = ExtResource("2_t6bnd")
+texture_pressed = ExtResource("3_ia84y")
+texture_hover = ExtResource("4_6at21")
+
+[node name="SettingsButton" type="TextureButton" parent="." unique_id=1497677417]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 73.0
+offset_right = 228.0
+offset_bottom = 113.0
+texture_normal = ExtResource("5_og6xe")
+texture_hover = ExtResource("6_mvfl2")

@@ -2,6 +2,8 @@ extends Node
 
 func _ready() -> void:
 	RoundManager.selected_weapon_changed.connect(func(): update_highlights(RoundManager.selected_attack))
+	
+	_attacks_changed()
 
 func _on_first_attack_pressed() -> void:
 	PlayerInputs.first_attack_pressed.emit()
@@ -47,5 +49,14 @@ func play_sound_on_item_clicked(item: String) -> void:
 
 
 func _on_pause_button_pressed() -> void:
+	SFX.play(SFX.Id.WOOD)
 	PlayerInputs.accepting_input = false
 	%Settings.visible = true
+
+func _attacks_changed() -> void:
+	if Constants.WEAPON_SPRITES.get(RoundManager.attacks[0]) != null:
+		%FirstAttack.texture_normal = Constants.WEAPON_SPRITES[RoundManager.attacks[0]]
+	if Constants.WEAPON_SPRITES.get(RoundManager.attacks[1]) != null:
+		%SecondAttack.texture_normal = Constants.WEAPON_SPRITES[RoundManager.attacks[1]]
+	if Constants.WEAPON_SPRITES.get(RoundManager.attacks[2]) != null:
+		%ThirdAttack.texture_normal = Constants.WEAPON_SPRITES[RoundManager.attacks[2]]

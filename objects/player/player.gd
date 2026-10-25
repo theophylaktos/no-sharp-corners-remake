@@ -18,6 +18,8 @@ func _ready() -> void:
 	RoundManager.player_select_up.connect(select_up)
 	RoundManager.player_select_down.connect(select_down)
 	
+	RoundManager.selected_weapon_changed.connect(toggle)
+	
 	RoundManager.debug_pressed.connect(debug)
 
 func debug() -> void:

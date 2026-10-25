@@ -41,3 +41,10 @@ func _on_close_button_pressed() -> void:
 func _on_exit_button_pressed() -> void:
 	pass
 	#RoundManager.change_scene_to_menu()
+
+
+func button_pressed() -> void:
+	SFX.play(SFX.Id.BUTTON_PRESS)
+
+func button_mouse_entered() -> void:
+	SFX.play(SFX.Id.BUTTON_HOVER)

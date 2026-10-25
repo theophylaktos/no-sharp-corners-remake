@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dxc5odiqa1lnj" path="res://assets/art/settings/settings_x.png" id="11_dqqhb"]
 [ext_resource type="Texture2D" uid="uid://ly1b8f6vhydt" path="res://assets/art/settings/settings_back.png" id="12_b2suy"]
 [ext_resource type="Theme" uid="uid://db55p8fs1nvfa" path="res://settings_theme.tres" id="13_h8lre"]
+[ext_resource type="Texture2D" uid="uid://jp3cch011661" path="res://assets/art/settings/settings_back_hover.png" id="15_h8lre"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ai45w"]
 shader = ExtResource("8_4papg")
@@ -125,6 +126,7 @@ offset_top = 11.0
 offset_right = 24.0
 offset_bottom = 24.0
 texture_normal = ExtResource("12_b2suy")
+texture_hover = ExtResource("15_h8lre")
 
 [node name="MasterSlider" type="HSlider" parent="Settings" unique_id=559919969]
 layout_mode = 0
@@ -163,5 +165,9 @@ value = 0.5
 [connection signal="pressed" from="UI/FirstAttack" to="UI" method="_on_first_attack_pressed"]
 [connection signal="pressed" from="UI/SecondAttack" to="UI" method="_on_second_attack_pressed"]
 [connection signal="pressed" from="UI/ThirdAttack" to="UI" method="_on_third_attack_pressed"]
+[connection signal="mouse_entered" from="Settings/CloseButton" to="Settings" method="button_mouse_entered"]
 [connection signal="pressed" from="Settings/CloseButton" to="Settings" method="_on_close_button_pressed"]
+[connection signal="pressed" from="Settings/CloseButton" to="Settings" method="button_pressed"]
+[connection signal="mouse_entered" from="Settings/ExitButton" to="Settings" method="button_mouse_entered"]
 [connection signal="pressed" from="Settings/ExitButton" to="Settings" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Settings/ExitButton" to="Settings" method="button_pressed"]
