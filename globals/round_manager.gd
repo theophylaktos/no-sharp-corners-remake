@@ -14,7 +14,7 @@ var attacks_left: int = attacks_max
 
 var attacks: Array[String] = ["attack", "", ""]
 
-var selected_attack = attacks[0]
+var selected_attack: int = 0
 
 signal player_move_left
 signal player_move_right
@@ -28,7 +28,7 @@ signal player_select_down
 
 signal debug_pressed
 
-signal equipped_weapon_changed
+signal selected_weapon_changed
 
 func _ready() -> void:
 	PlayerInputs.left_pressed.connect(_player_move_left)
@@ -36,12 +36,12 @@ func _ready() -> void:
 	PlayerInputs.up_pressed.connect(_player_move_up)
 	PlayerInputs.down_pressed.connect(_player_move_down)
 	
-	PlayerInputs.first_attack_pressed.connect(func(): _equip_weapon(0))
-	PlayerInputs.second_attack_pressed.connect(func(): _equip_weapon(1))
-	PlayerInputs.third_attack_pressed.connect(func(): _equip_weapon(2))
+	PlayerInputs.first_attack_pressed.connect(func(): _select_weapon(0))
+	PlayerInputs.second_attack_pressed.connect(func(): _select_weapon(1))
+	PlayerInputs.third_attack_pressed.connect(func(): _select_weapon(2))
 	
-	PlayerInputs.select_left_pressed.connect(func(): _equip_weapon(attacks.find(selected_attack) - 1))
-	PlayerInputs.select_right_pressed.connect(func(): _equip_weapon(attacks.find(selected_attack) + 1))
+	PlayerInputs.select_left_pressed.connect(func(): _select_weapon(selected_attack - 1))
+	PlayerInputs.select_right_pressed.connect(func(): _select_weapon(selected_attack + 1))
 	
 	PlayerInputs.debug_pressed.connect(_debug_pressed)
 	start_round()
@@ -111,6 +111,6 @@ func add_enemy(enemy_name: String):
 	world.add_child(enemy)
 	enemy.tile_coordinates = LevelManager.random_empty_segment()
 	
-func _equip_weapon(slot: int):
-	equipped_weapon_changed.emit()
-	selected_attack = attacks[clampi(slot, 0, 2)]
+func _select_weapon(slot: int):
+	selected_attack = clampi(slot, 0, 2)
+	selected_weapon_changed.emit()

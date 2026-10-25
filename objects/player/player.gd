@@ -116,9 +116,9 @@ func select_down():
 	toggle()
 func toggle():
 	LevelManager.clear_all_player_attack_segments()
-	for i in AttackPatterns.attack_patterns[RoundManager.selected_attack].size():
-		var x = AttackPatterns.attack_patterns[RoundManager.selected_attack][i].x
-		var y = AttackPatterns.attack_patterns[RoundManager.selected_attack][i].y
+	for i in AttackPatterns.attack_patterns[RoundManager.attacks[RoundManager.selected_attack]].size():
+		var x = AttackPatterns.attack_patterns[RoundManager.attacks[RoundManager.selected_attack]][i].x
+		var y = AttackPatterns.attack_patterns[RoundManager.attacks[RoundManager.selected_attack]][i].y
 		
 		var faces: Dictionary[String, Vector2] = {
 			"Forward": Vector2i(tile_coordinates.x, tile_coordinates.y) + Vector2i(x, y),

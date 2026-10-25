@@ -1,7 +1,7 @@
 extends Node
 
 func _ready() -> void:
-	RoundManager.equipped_weapon_changed.connect(func(): update_highlights(RoundManager.attacks.find(RoundManager.selected_attack)))
+	RoundManager.selected_weapon_changed.connect(func(): update_highlights(RoundManager.selected_attack))
 
 func _on_first_attack_pressed() -> void:
 	PlayerInputs.first_attack_pressed.emit()
@@ -16,7 +16,6 @@ func _on_third_attack_pressed() -> void:
 	update_highlights(2)
 	
 func update_highlights(slot: int) -> void:
-	print(slot)
 	match slot:
 		0:
 			%FirstAttack.material.set_shader_parameter("is_outlined", true)
