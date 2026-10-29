@@ -11,8 +11,11 @@
 [ext_resource type="Shader" uid="uid://c0jih7pwrhu4p" path="res://level/outline.gdshader" id="8_4papg"]
 [ext_resource type="Script" uid="uid://b4vj6dplklpri" path="res://world/settings.gd" id="10_b2suy"]
 [ext_resource type="Shader" uid="uid://cjce3iwe2baoe" path="res://world/vignette.gdshader" id="10_dqqhb"]
+[ext_resource type="Texture2D" uid="uid://cbf4s6ae8jy1l" path="res://assets/art/ui/confirm_attack.png" id="10_j34ew"]
 [ext_resource type="Texture2D" uid="uid://cebwyqk5ioth5" path="res://assets/art/settings/settings_with_slime.png" id="10_ocfjn"]
 [ext_resource type="Texture2D" uid="uid://dxc5odiqa1lnj" path="res://assets/art/settings/settings_x.png" id="11_dqqhb"]
+[ext_resource type="Texture2D" uid="uid://cakpkc15koqx5" path="res://assets/art/ui/confirm_attack_press.png" id="11_p2iis"]
+[ext_resource type="Texture2D" uid="uid://bg84doph3wav0" path="res://assets/art/ui/confirm_attack_hover.png" id="12_aysyn"]
 [ext_resource type="Texture2D" uid="uid://ly1b8f6vhydt" path="res://assets/art/settings/settings_back.png" id="12_b2suy"]
 [ext_resource type="Theme" uid="uid://db55p8fs1nvfa" path="res://settings_theme.tres" id="13_h8lre"]
 [ext_resource type="Texture2D" uid="uid://jp3cch011661" path="res://assets/art/settings/settings_back_hover.png" id="15_h8lre"]
@@ -83,6 +86,15 @@ offset_top = 1.0
 offset_right = 173.0
 offset_bottom = 35.0
 texture_normal = ExtResource("7_sc4t8")
+
+[node name="SubmitAttack" type="TextureButton" parent="UI" unique_id=29553272]
+offset_left = 106.0
+offset_top = 35.0
+offset_right = 172.0
+offset_bottom = 75.0
+texture_normal = ExtResource("10_j34ew")
+texture_pressed = ExtResource("11_p2iis")
+texture_hover = ExtResource("12_aysyn")
 
 [node name="Settings" type="Control" parent="." unique_id=6689752]
 unique_name_in_owner = true
@@ -166,9 +178,10 @@ value = 0.5
 [connection signal="pressed" from="UI/FirstAttack" to="UI" method="_on_first_attack_pressed"]
 [connection signal="pressed" from="UI/SecondAttack" to="UI" method="_on_second_attack_pressed"]
 [connection signal="pressed" from="UI/ThirdAttack" to="UI" method="_on_third_attack_pressed"]
+[connection signal="pressed" from="UI/SubmitAttack" to="UI" method="_on_submit_attack_pressed"]
 [connection signal="mouse_entered" from="Settings/CloseButton" to="Settings" method="button_mouse_entered"]
-[connection signal="pressed" from="Settings/CloseButton" to="Settings" method="_on_close_button_pressed"]
 [connection signal="pressed" from="Settings/CloseButton" to="Settings" method="button_pressed"]
+[connection signal="pressed" from="Settings/CloseButton" to="Settings" method="_on_close_button_pressed"]
 [connection signal="mouse_entered" from="Settings/ExitButton" to="Settings" method="button_mouse_entered"]
-[connection signal="pressed" from="Settings/ExitButton" to="Settings" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="Settings/ExitButton" to="Settings" method="button_pressed"]
+[connection signal="pressed" from="Settings/ExitButton" to="Settings" method="_on_exit_button_pressed"]

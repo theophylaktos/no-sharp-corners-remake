@@ -60,3 +60,7 @@ func _attacks_changed() -> void:
 		%SecondAttack.texture_normal = Constants.WEAPON_SPRITES[RoundManager.attacks[1]]
 	if Constants.WEAPON_SPRITES.get(RoundManager.attacks[2]) != null:
 		%ThirdAttack.texture_normal = Constants.WEAPON_SPRITES[RoundManager.attacks[2]]
+
+
+func _on_submit_attack_pressed() -> void:
+	PlayerInputs.submit_attack_pressed.emit()

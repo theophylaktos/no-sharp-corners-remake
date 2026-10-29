@@ -30,6 +30,8 @@ signal debug_pressed
 
 signal selected_weapon_changed
 
+const ENEMY_SCENE = preload("uid://do4qeckfx47bx")
+
 func _ready() -> void:
 	PlayerInputs.left_pressed.connect(_player_move_left)
 	PlayerInputs.right_pressed.connect(_player_move_right)
@@ -98,12 +100,11 @@ func add_enemies():
 	for enemy in Rounds.rounds[current_round]:
 		add_enemy(enemy)
 	
-func add_enemy(enemy_name: String):
+func add_enemy(enemy_type: String):
 	var enemy: Node2D
-	match enemy_name:
-		"mushroom":
-			enemy = load("uid://do4qeckfx47bx").instantiate()
-	enemy.name = enemy_name + str(Time.get_ticks_usec())
+	enemy = ENEMY_SCENE.instantiate()
+	enemy.enemy_type = enemy_type
+	enemy.name = enemy_type + str(Time.get_ticks_usec())
 	while (world == null):
 		await get_tree().create_timer(0.01).timeout
 	if (enemy == null):

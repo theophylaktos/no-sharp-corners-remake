@@ -15,6 +15,8 @@ signal second_attack_pressed
 @warning_ignore("unused_signal")
 signal third_attack_pressed
 
+signal submit_attack_pressed
+
 signal debug_pressed
 
 var accepting_input: bool = true

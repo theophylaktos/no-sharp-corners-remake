@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://do4qeckfx47bx"]
+
+[ext_resource type="Script" uid="uid://bpp2kg1r330n" path="res://objects/enemy/enemy.gd" id="1_1rjq7"]
+[ext_resource type="SpriteFrames" uid="uid://bcf6pcwo58syt" path="res://objects/enemy/goblin_sprite_frames.tres" id="2_1rjq7"]
+
+[node name="Enemy" type="Node2D" unique_id=74306952 node_paths=PackedStringArray("local")]
+script = ExtResource("1_1rjq7")
+local = NodePath("Local")
+metadata/_custom_type_script = "uid://03ouipeubj5q"
+
+[node name="Local" type="Node2D" parent="." unique_id=652924500]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Local" unique_id=677242445]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_1rjq7")
+animation = &"idle_back"
