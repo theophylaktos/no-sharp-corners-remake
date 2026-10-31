@@ -1,6 +1,7 @@
 # no-sharp-corners-remake
 
-THIS IS A WORK IN PROGRESS. NOT ALL FEATURES ARE CODED YET.
+THIS IS A **WORK IN PROGRESS**. NOT ALL FEATURES ARE CODED YET. CURRENTLY, YOU CAN ONLY GET UP
+TO SELECTING YOUR WEAPON AND WHICH DIRECTION TO ATTACK.
 
 This is a remake of a game I made for a gamejam. I'm hoping to remove all of the bugs and make it playable.
 Original Version: https://theophylaktos.itch.io/no-sharp-corners
