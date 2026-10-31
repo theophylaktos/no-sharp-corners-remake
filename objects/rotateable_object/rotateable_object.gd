@@ -13,6 +13,9 @@ class_name RotateableObject
 		tile_coordinates = Vector2i(clamped_x, clamped_y)
 		LevelManager.object_tile_coordinates[clamped_x][clamped_y] = self
 		
+		if self.has_method("play_idle"):
+			self.call("play_idle")
+		
 		var start_rotation = self.rotation
 		var end_rotation = (PI / 8) + clamped_y * (PI / 4)
 		var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_LINEAR)

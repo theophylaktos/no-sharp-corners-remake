@@ -13,11 +13,12 @@ var is_dying = false
 func update_type(type: String):
 	%Sprite.sprite_frames = Constants.ENEMY_SPRITE_FRAMES[type]
 	
-func _process(delta: float) -> void:
+func _ready() -> void:
 	play_idle()
-
+	
 func play_idle():
-	if not is_attacking or not is_dying:
+	if not is_attacking and not is_dying:
+		print(tile_coordinates.y)
 		if tile_coordinates.y == 7 or tile_coordinates.y == 0:
 			if %Sprite.animation != "idle_right":
 				%Sprite.play("idle_right")

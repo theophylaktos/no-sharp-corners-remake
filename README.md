@@ -1,5 +1,7 @@
 # no-sharp-corners-remake
 
+THIS IS A WORK IN PROGRESS. NOT ALL FEATURES ARE CODED YET.
+
 This is a remake of a game I made for a gamejam. I'm hoping to remove all of the bugs and make it playable.
 Original Version: https://theophylaktos.itch.io/no-sharp-corners
 Remake (this project): https://theophylaktos.itch.io/no-sharp-corners-remake?password=slime
