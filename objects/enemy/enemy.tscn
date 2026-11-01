@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://do4qeckfx47bx"]
 
 [ext_resource type="Script" uid="uid://bpp2kg1r330n" path="res://objects/enemy/enemy.gd" id="1_1rjq7"]
-[ext_resource type="SpriteFrames" uid="uid://bcf6pcwo58syt" path="res://objects/enemy/goblin_sprite_frames.tres" id="2_1rjq7"]
+[ext_resource type="SpriteFrames" uid="uid://cmpkqlaa6epby" path="res://objects/enemy/mushroom_sprite_frames.tres" id="2_1rjq7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esv4w"]
 bg_color = Color(0.45490196, 0.5921569, 0.6509804, 1)
@@ -35,6 +35,7 @@ animation = &"idle_back"
 
 [node name="HealthBar" type="ProgressBar" parent="Local" unique_id=110362889]
 unique_name_in_owner = true
+z_index = 5
 offset_left = -10.0
 offset_top = 3.0
 offset_right = 6.0

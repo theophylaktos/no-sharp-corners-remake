@@ -1,6 +1,6 @@
 extends Node
 
-const DISTANCES: Array[int] = [57, 39, 25]
+const DISTANCES: Array[int] = [57, 40, 22]
 
 const RING_SIZE: int = 2
 const DEGREE_SIZE: int = 7
