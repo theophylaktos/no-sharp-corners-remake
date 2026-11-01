@@ -38,6 +38,7 @@ func play_idle():
 				
 func play_attack():
 	is_attacking = true
+	play_enemy_sound("Attack")
 	if tile_coordinates.y == 7 or tile_coordinates.y == 0:
 		%Sprite.play("attack_right")
 	if tile_coordinates.y == 1 or tile_coordinates.y == 2:
@@ -48,3 +49,52 @@ func play_attack():
 		%Sprite.play("attack_front")
 	await %Sprite.animation_finished
 	is_attacking = false
+
+func play_enemy_sound(sound: String):
+	match sound:
+		"Attack":
+			match enemy_type:
+				"Ghost":
+					SFX.play(SFX.Id.GHOST_ATTACK)
+				"Golem":
+					SFX.play(SFX.Id.GOLEM_ATTACK)
+				"Mushroom":
+					SFX.play(SFX.Id.MUSHROOM_ATTACK)
+				"Goblin":
+					SFX.play(SFX.Id.GOBLIN_ATTACK)
+				"Snake":
+					SFX.play(SFX.Id.SNAKE_ATTACK)
+		"Death":
+			match enemy_type:
+				"Ghost":
+					SFX.play(SFX.Id.GHOST_DEATH)
+				"Golem":
+					SFX.play(SFX.Id.GOLEM_DEATH)
+				"Mushroom":
+					SFX.play(SFX.Id.MUSHROOM_DEATH)
+				"Goblin":
+					SFX.play(SFX.Id.GOBLIN_DEATH)
+				"Snake":
+					SFX.play(SFX.Id.SNAKE_DEATH)
+		"Move":
+			match enemy_type:
+				"Ghost":
+					SFX.play(SFX.Id.GHOST_MOVE)
+				"Golem":
+					SFX.play(SFX.Id.GOLEM_DEATH)
+				"Mushroom":
+					SFX.play(SFX.Id.MUSHROOM_MOVE)
+				"Goblin":
+					SFX.play(SFX.Id.GOBLIN_MOVE)
+				"Snake":
+					SFX.play(SFX.Id.SNAKE_MOVE)
+	
+func highlight_attack():
+	for attack in AttackPatterns.enemy_attack_patterns[enemy_type]:
+		var v= (Vector2i)(attack)
+		if tile_coordinates.x + v.x >= 0 and tile_coordinates.x + v.x <= 2:
+			var new_y: int = tile_coordinates.y + v.y
+			if new_y < 0:
+				new_y = 8 + new_y
+			new_y = new_y % 8
+			LevelManager.toggle_enemy_attack_segment(tile_coordinates.x + v.x, new_y, true)

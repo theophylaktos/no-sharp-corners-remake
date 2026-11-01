@@ -25,7 +25,7 @@ class_name RotateableObject
 			func(value: float) -> void:
 				rotate_sprite(start_rotation, end_rotation, value), 0.0, 1.0, Constants.ROTATE_TIME
 		)
-
+		
 func rotate_sprite(start_rotation, end_rotation, value):
 	var current_rotation = lerp_angle(start_rotation, end_rotation, value)
 	position = Vector2(cos(current_rotation), sin(current_rotation)) * Constants.DISTANCES[tile_coordinates.x]

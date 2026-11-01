@@ -84,7 +84,7 @@ func _move_in():
 	if tile_coordinates.x + 1 <= 2:
 		if LevelManager.object_tile_coordinates[tile_coordinates.x + 1][tile_coordinates.y] != null:
 			return
-		RoundManager.decrease_moves()
+		RoundManager.moves_left -= 1
 		SFX.play(SFX.Id.SLIME)
 		tile_coordinates = Vector2i(tile_coordinates.x + 1, tile_coordinates.y)
 	
@@ -92,14 +92,14 @@ func _move_out():
 	if tile_coordinates.x - 1 >= 0:
 		if LevelManager.object_tile_coordinates[tile_coordinates.x - 1][tile_coordinates.y] != null:
 			return
-		RoundManager.decrease_moves()
+		RoundManager.moves_left -= 1
 		SFX.play(SFX.Id.SLIME)
 		tile_coordinates = Vector2i(tile_coordinates.x - 1, tile_coordinates.y)
 	
 func _rotate_ring(amount: int):
 	SFX.play(SFX.Id.ROCK)
 	LevelManager.rotate_ring(tile_coordinates.x, amount)
-	RoundManager.decrease_moves() 
+	RoundManager.moves_left -= 1 
 	
 func select_left():
 	selected_direction = "A"

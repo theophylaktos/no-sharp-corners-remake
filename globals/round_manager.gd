@@ -2,8 +2,23 @@ extends Node
 
 @export var world: Node2D
 
-@export var phase: String = "player_move"
-
+signal change_to_player_move
+signal change_to_player_attack
+signal change_to_enemy_move
+signal change_to_enemy_attack
+@export var phase: String = "player_move":
+	set(new_value):
+		phase = new_value
+		match new_value:
+			"player_move":
+				change_to_player_move.emit()
+			"player_attack":
+				change_to_player_attack.emit()
+			"enemy_move":
+				change_to_enemy_move.emit()
+			"enemy_attack":
+				change_to_enemy_attack.emit()
+	
 var selected_attack: int = 0
 
 signal health_changed
@@ -15,14 +30,18 @@ signal health_changed
 signal moves_changed
 @onready var moves_left: int = GameState.moves_max:
 	set(new_value):
-		moves_changed.emit()
 		moves_left = new_value
+		moves_changed.emit()
+		if moves_left == 0:
+			phase = "player_attack"
 
 signal attacks_changed
 @onready var attacks_left: int = GameState.attacks_max:
 	set(new_value):
-		attacks_changed.emit()
 		attacks_left = new_value
+		attacks_changed.emit()
+		if moves_left == 0:
+			phase = "enemy_move"
 
 signal debug_pressed
 
@@ -54,6 +73,8 @@ func _ready() -> void:
 	PlayerInputs.select_right_pressed.connect(func(): _select_weapon(selected_attack + 1))
 	
 	PlayerInputs.debug_pressed.connect(_debug_pressed)
+	
+	PlayerInputs.submit_attack_pressed.connect(damage_enemies)
 	start_round()
 	
 func _debug_pressed():
@@ -82,11 +103,6 @@ func _player_move_down():
 		player_move_down.emit()
 	if phase == "player_attack":
 		player_select_down.emit()
-	
-func decrease_moves():
-	moves_left -= 1
-	if moves_left == 0:
-		phase = "player_attack"
 
 func decrease_attacks():
 	attacks_left -= 1
@@ -124,16 +140,17 @@ func _select_weapon(slot: int):
 	if phase == "player_attack":
 		selected_attack = clampi(slot, 0, 2)
 		selected_weapon_changed.emit()
-
+	
 func damage_enemies():
-	for ring in LevelManager.semgents.size():
-		for degree in LevelManager.semgents[0].size():
-			var material: ShaderMaterial = LevelManager.semgents[ring][degree].get_material()
+	for ring in LevelManager.segments.size():
+		for degree in LevelManager.segments[0].size():
+			var material: ShaderMaterial = LevelManager.segments[ring][degree].get_material()
 			if material.get_shader_parameter("player_attack_enabled") == true:
 				var node = LevelManager.object_tile_coordinates[ring][degree]
 				if node is Enemy:
-					if node.max_health - node.health <= 0:
-						node.play_death_sound()
-					node.take_damage(GameState.player_damage)
+					if Constants.ENEMY_HEALTH[node.enemy_type] - node.health <= 0:
+						node.play_enemy_sound("Death")
+					node.health -= GameState.player_damage
 					await get_tree().create_timer(1).timeout
-	LevelManager.refresh_enemy_highlights()
+	if moves_left <= 0:
+		LevelManager.clear_all_player_attack_segments()

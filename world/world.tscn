@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bg84doph3wav0" path="res://assets/art/ui/confirm_attack_hover.png" id="12_aysyn"]
 [ext_resource type="Texture2D" uid="uid://ly1b8f6vhydt" path="res://assets/art/settings/settings_back.png" id="12_b2suy"]
 [ext_resource type="Theme" uid="uid://db55p8fs1nvfa" path="res://settings_theme.tres" id="13_h8lre"]
+[ext_resource type="Texture2D" uid="uid://dy0wll82hdxj0" path="res://assets/art/ui/confirm_button_disabled.png" id="13_p2iis"]
 [ext_resource type="Texture2D" uid="uid://jp3cch011661" path="res://assets/art/settings/settings_back_hover.png" id="15_h8lre"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ai45w"]
@@ -86,6 +87,7 @@ offset_top = 1.0
 offset_right = 173.0
 offset_bottom = 35.0
 texture_normal = ExtResource("7_sc4t8")
+texture_disabled = ExtResource("7_sc4t8")
 
 [node name="SubmitAttack" type="TextureButton" parent="UI" unique_id=29553272]
 offset_left = 106.0
@@ -95,6 +97,7 @@ offset_bottom = 75.0
 texture_normal = ExtResource("10_j34ew")
 texture_pressed = ExtResource("11_p2iis")
 texture_hover = ExtResource("12_aysyn")
+texture_disabled = ExtResource("13_p2iis")
 
 [node name="HeartIcons" type="Node" parent="UI" unique_id=483376254]
 

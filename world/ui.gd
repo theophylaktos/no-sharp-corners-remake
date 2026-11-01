@@ -6,14 +6,18 @@ func _ready() -> void:
 	RoundManager.health_changed.connect(func(): play_health_loss_animation(RoundManager.health_left))
 	RoundManager.moves_changed.connect(func(): play_move_loss_animation(RoundManager.moves_left))
 	RoundManager.attacks_changed.connect(func(): play_attack_loss_animation(RoundManager.attacks_left))
-
+	
 	GameState.health_max_changed.connect(func(): update_max_health(GameState.health_max))
 	GameState.moves_max_changed.connect(func(): update_max_moves(GameState.moves_max))
 	GameState.attacks_max_changed.connect(func(): update_max_attacks(GameState.attacks_max))
 	update_max_health(GameState.health_max)
 	update_max_moves(GameState.moves_max)
 	update_max_attacks(GameState.attacks_max)
-
+	
+	$SubmitAttack.disabled = true
+	RoundManager.change_to_player_attack.connect(func(): $SubmitAttack.disabled = false)
+	RoundManager.change_to_enemy_move.connect(func(): $SubmitAttack.disabled = true)
+	
 func _on_first_attack_pressed() -> void:
 	PlayerInputs.first_attack_pressed.emit()
 	update_highlights(0)
@@ -28,23 +32,28 @@ func _on_third_attack_pressed() -> void:
 	
 func update_highlights(slot: int) -> void:
 	match slot:
+		-1:
+			%FirstAttack.material.set_shader_parameter("is_outlined", false)
+			%SecondAttack.material.set_shader_parameter("is_outlined", false)
+			%ThirdAttack.material.set_shader_parameter("is_outlined", false)
+			return
 		0:
 			%FirstAttack.material.set_shader_parameter("is_outlined", true)
 			%SecondAttack.material.set_shader_parameter("is_outlined", false)
 			%ThirdAttack.material.set_shader_parameter("is_outlined", false)
-			play_sound_on_item_clicked(RoundManager.attacks[0])
+			play_sound_on_item_clicked(GameState.attacks[0])
 			return
 		1:
 			%FirstAttack.material.set_shader_parameter("is_outlined", false)
 			%SecondAttack.material.set_shader_parameter("is_outlined", true)
 			%ThirdAttack.material.set_shader_parameter("is_outlined", false)
-			play_sound_on_item_clicked(RoundManager.attacks[1])
+			play_sound_on_item_clicked(GameState.attacks[1])
 			return
 		2:
 			%FirstAttack.material.set_shader_parameter("is_outlined", false)
 			%SecondAttack.material.set_shader_parameter("is_outlined", false)
 			%ThirdAttack.material.set_shader_parameter("is_outlined", true)
-			play_sound_on_item_clicked(RoundManager.attacks[2])
+			play_sound_on_item_clicked(GameState.attacks[2])
 			return
 	
 func play_sound_on_item_clicked(item: String) -> void:
@@ -70,6 +79,7 @@ func _attacks_changed() -> void:
 		%ThirdAttack.texture_normal = Constants.WEAPON_SPRITES[GameState.attacks[2]]
 	
 func _on_submit_attack_pressed() -> void:
+	RoundManager.attacks_left -= 1
 	PlayerInputs.submit_attack_pressed.emit()
 	
 func update_max_health(amount: int) -> void:
@@ -87,7 +97,7 @@ func update_max_moves(amount: int) -> void:
 		icon.position = Vector2(165 - (GameState.attacks_max * 18), -39)
 		icon.position.x -= move * 18
 		$MoveIcons.add_child(icon)
-		
+				
 func update_max_attacks(amount: int) -> void:
 	for attack in amount:
 		var icon: AnimatedSprite2D = Constants.ATTACK_ICON.instantiate()
@@ -101,9 +111,23 @@ func play_health_loss_animation(heart: int) -> void:
 	sprite.play("drain")
 	
 func play_move_loss_animation(move: int) -> void:
-	var sprite: AnimatedSprite2D = $MoveIcons.get_child(move - 1)
-	sprite.play("used")
-	
+	match move:
+		3:
+			return
+		2, 1, 0:
+			var sprite: AnimatedSprite2D = $MoveIcons.get_child(move)
+			sprite.play("used")
+		0:
+			_on_first_attack_pressed()
 func play_attack_loss_animation(attack: int) -> void:
-	var sprite: AnimatedSprite2D = $AttackIcons.get_child(attack - 1)
-	sprite.play("used")
+	match attack:
+		0:
+			var sprite: AnimatedSprite2D = $AttackIcons.get_child(attack)
+			sprite.play("used")
+			update_highlights(-1)
+			switch_attacks_disabled(true)
+	
+func switch_attacks_disabled(switch: bool):
+	%FirstAttack.disabled = switch
+	%SecondAttack.disabled = switch
+	%ThirdAttack.disabled = switch
