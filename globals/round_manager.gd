@@ -1,20 +1,30 @@
 extends Node
 
-var current_round: int = 0
-
 @export var world: Node2D
 
 @export var phase: String = "player_move"
 
-var moves_max: int = 3
-var attacks_max: int = 1
-
-var moves_left: int = moves_max
-var attacks_left: int = attacks_max
-
-var attacks: Array[String] = ["attack", "attack2", ""]
-
 var selected_attack: int = 0
+
+signal health_changed
+@onready var health_left = GameState.health_max:
+	set(new_value):
+		health_changed.emit()
+		health_left = new_value
+		
+signal moves_changed
+@onready var moves_left: int = GameState.moves_max:
+	set(new_value):
+		moves_changed.emit()
+		moves_left = new_value
+
+signal attacks_changed
+@onready var attacks_left: int = GameState.attacks_max:
+	set(new_value):
+		attacks_changed.emit()
+		attacks_left = new_value
+
+signal debug_pressed
 
 signal player_move_left
 signal player_move_right
@@ -25,8 +35,6 @@ signal player_select_left
 signal player_select_right
 signal player_select_up
 signal player_select_down
-
-signal debug_pressed
 
 signal selected_weapon_changed
 
@@ -97,7 +105,7 @@ func add_player():
 	player.tile_coordinates = Vector2(0,0)
 	
 func add_enemies():
-	for enemy in Rounds.rounds[current_round]:
+	for enemy in Rounds.rounds[GameState.current_round]:
 		add_enemy(enemy)
 	
 func add_enemy(enemy_type: String):
@@ -116,3 +124,16 @@ func _select_weapon(slot: int):
 	if phase == "player_attack":
 		selected_attack = clampi(slot, 0, 2)
 		selected_weapon_changed.emit()
+
+func damage_enemies():
+	for ring in LevelManager.semgents.size():
+		for degree in LevelManager.semgents[0].size():
+			var material: ShaderMaterial = LevelManager.semgents[ring][degree].get_material()
+			if material.get_shader_parameter("player_attack_enabled") == true:
+				var node = LevelManager.object_tile_coordinates[ring][degree]
+				if node is Enemy:
+					if node.max_health - node.health <= 0:
+						node.play_death_sound()
+					node.take_damage(GameState.player_damage)
+					await get_tree().create_timer(1).timeout
+	LevelManager.refresh_enemy_highlights()

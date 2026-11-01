@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://csx7htciqrpvj"]
+
+[ext_resource type="Texture2D" uid="uid://cn65pyff78c3n" path="res://assets/art/ui/icons/health_drain.png" id="1_wwbtf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnny6"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4y0j"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flvrt"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hha7b"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5lja"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlmjl"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eef52"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_708bt"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rme8k"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfmk7"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nfn1"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ttb5"]
+atlas = ExtResource("1_wwbtf")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7bva4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnny6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4y0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flvrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hha7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5lja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlmjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eef52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_708bt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rme8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfmk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nfn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ttb5")
+}],
+"loop": 0,
+"name": &"drain",
+"speed": 5.0
+}]
+
+[node name="HeartIcon" type="AnimatedSprite2D" unique_id=512884270]
+sprite_frames = SubResource("SpriteFrames_7bva4")
+animation = &"drain"

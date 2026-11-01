@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://yoxa5u2nhrm"]
+
+[ext_resource type="Texture2D" uid="uid://bh4jbss3p34a4" path="res://assets/art/ui/icons/move_icon.png" id="1_u3qqr"]
+[ext_resource type="Texture2D" uid="uid://bs07rvx8acl1r" path="res://assets/art/ui/icons/used_move_icon.png" id="2_l5tqc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suxm8"]
+atlas = ExtResource("1_u3qqr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joqa0"]
+atlas = ExtResource("1_u3qqr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khqgc"]
+atlas = ExtResource("1_u3qqr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n83b"]
+atlas = ExtResource("2_l5tqc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_83vd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suxm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joqa0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khqgc")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n83b")
+}],
+"loop": 0,
+"name": &"used",
+"speed": 5.0
+}]
+
+[node name="MoveIcon" type="AnimatedSprite2D" unique_id=1138691865]
+sprite_frames = SubResource("SpriteFrames_83vd0")
+animation = &"idle"
+autoplay = "idle"

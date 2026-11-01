@@ -14,11 +14,15 @@ func update_type(type: String):
 	%Sprite.sprite_frames = Constants.ENEMY_SPRITE_FRAMES[type]
 	
 func _ready() -> void:
+	health = Constants.ENEMY_HEALTH[enemy_type]
 	play_idle()
+	update_healthbar()
+	
+func update_healthbar():
+	%HealthBar.value = (self.health * 1.0) / (Constants.ENEMY_HEALTH[enemy_type] * 1.0)
 	
 func play_idle():
 	if not is_attacking and not is_dying:
-		print(tile_coordinates.y)
 		if tile_coordinates.y == 7 or tile_coordinates.y == 0:
 			if %Sprite.animation != "idle_right":
 				%Sprite.play("idle_right")

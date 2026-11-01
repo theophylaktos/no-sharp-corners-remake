@@ -23,8 +23,8 @@ func _ready() -> void:
 	RoundManager.debug_pressed.connect(debug)
 
 func debug() -> void:
-	toggle()
-
+	pass
+	
 func calculate_direction() -> String:
 	if tile_coordinates.y == 0 or tile_coordinates.y == 7:
 		return "Right"
@@ -116,11 +116,12 @@ func select_up():
 func select_down():
 	selected_direction = "S"
 	toggle()
+	
 func toggle():
 	LevelManager.clear_all_player_attack_segments()
-	for i in AttackPatterns.player_attack_patterns[RoundManager.attacks[RoundManager.selected_attack]].size():
-		var x = AttackPatterns.player_attack_patterns[RoundManager.attacks[RoundManager.selected_attack]][i].x
-		var y = AttackPatterns.player_attack_patterns[RoundManager.attacks[RoundManager.selected_attack]][i].y
+	for i in AttackPatterns.player_attack_patterns[GameState.attacks[RoundManager.selected_attack]].size():
+		var x = AttackPatterns.player_attack_patterns[GameState.attacks[RoundManager.selected_attack]][i].x
+		var y = AttackPatterns.player_attack_patterns[GameState.attacks[RoundManager.selected_attack]][i].y
 		
 		var faces: Dictionary[String, Vector2] = {
 			"Forward": Vector2i(tile_coordinates.x, tile_coordinates.y) + Vector2i(x, y),
@@ -177,4 +178,4 @@ func toggle():
 			if segment.y < 0:
 				segment.y = 8 + segment.y
 			segment.y = segment.y % 8
-			LevelManager.enable_player_attack_segment(segment.x, segment.y)
+			LevelManager.toggle_player_attack_segment(segment.x, segment.y, true)

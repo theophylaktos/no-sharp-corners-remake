@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://b5je2lv2vomea"]
+
+[ext_resource type="Texture2D" uid="uid://dvem5fcvpnvuh" path="res://assets/art/ui/icons/attack_icon.png" id="1_ia2ey"]
+[ext_resource type="Texture2D" uid="uid://dhsnyd16t61qp" path="res://assets/art/ui/icons/used_attack_icon.png" id="2_4pvwc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpa3m"]
+atlas = ExtResource("1_ia2ey")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qni0j"]
+atlas = ExtResource("1_ia2ey")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm22d"]
+atlas = ExtResource("1_ia2ey")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbsvo"]
+atlas = ExtResource("1_ia2ey")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fgfb"]
+atlas = ExtResource("1_ia2ey")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm2ta"]
+atlas = ExtResource("1_ia2ey")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vu5j"]
+atlas = ExtResource("1_ia2ey")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhyc0"]
+atlas = ExtResource("1_ia2ey")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nbcj"]
+atlas = ExtResource("2_4pvwc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h0j7u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpa3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qni0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm22d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbsvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fgfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm2ta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vu5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhyc0")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nbcj")
+}],
+"loop": 1,
+"name": &"used",
+"speed": 5.0
+}]
+
+[node name="AttackIcon" type="AnimatedSprite2D" unique_id=1542938426]
+sprite_frames = SubResource("SpriteFrames_h0j7u")
+animation = &"used"
+autoplay = "idle"

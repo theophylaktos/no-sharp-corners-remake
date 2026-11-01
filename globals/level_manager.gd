@@ -79,19 +79,27 @@ func random_empty_segment() -> Vector2i:
 				empty_segments.append(Vector2i(ring,degree))
 	return empty_segments[randi_range(0, empty_segments.size() - 1)]
 
-func enable_enemy_attack_segment(ring: int, degree: int):
+func toggle_enemy_attack_segment(ring: int, degree: int, enabled: bool):
 	var material: ShaderMaterial = segments[ring][degree].get_material()
-	material.set_shader_parameter("enemy_attack_enabled", true)
+	material.set_shader_parameter("enemy_attack_enabled", enabled)
 
-func enable_player_attack_segment(ring: int, degree: int):
+func toggle_player_attack_segment(ring: int, degree: int, enabled: bool):
 	var material: ShaderMaterial = segments[ring][degree].get_material()
-	material.set_shader_parameter("player_attack_enabled", true)
+	material.set_shader_parameter("player_attack_enabled", enabled)
 	
 func clear_all_player_attack_segments():
 	for ring in segments.size():
 		for degree in segments[0].size():
-			clear_player_attack_segment(ring, degree)
+			toggle_player_attack_segment(ring, degree, false)
 	
-func clear_player_attack_segment(ring: int, degree: int):
-	var material: ShaderMaterial = segments[ring][degree].get_material()
-	material.set_shader_parameter("player_attack_enabled", false)
+func clear_all_enemy_attack_segments(): 
+	for ring in segments.size():
+		for degree in segments[0].size():
+			toggle_enemy_attack_segment(ring, degree, true)
+	
+func refresh_enemy_highlights():
+	clear_all_enemy_attack_segments()
+	for r in object_tile_coordinates.size():
+		for d in object_tile_coordinates[0].size():
+			if object_tile_coordinates[r][d] != null and object_tile_coordinates[r][d] is Enemy:
+				object_tile_coordinates[r][d].highlight_attack()
