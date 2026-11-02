@@ -23,12 +23,6 @@ signal change_to_enemy_attack
 	
 var selected_attack: int = 0
 
-signal health_changed
-@onready var health_left = GameState.health_max:
-	set(new_value):
-		health_changed.emit()
-		health_left = new_value
-		
 signal moves_changed
 @onready var moves_left: int = GameState.moves_max:
 	set(new_value):

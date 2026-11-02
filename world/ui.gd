@@ -3,7 +3,7 @@ extends Node
 func _ready() -> void:
 	RoundManager.selected_weapon_changed.connect(func(): update_highlights(RoundManager.selected_attack))
 	_attacks_changed()
-	RoundManager.health_changed.connect(func(): play_health_loss_animation(RoundManager.health_left))
+	GameState.health_changed.connect(func(): play_health_loss_animation(GameState.health_left))
 	RoundManager.moves_changed.connect(func(): play_move_loss_animation(RoundManager.moves_left))
 	RoundManager.attacks_changed.connect(func(): play_attack_loss_animation(RoundManager.attacks_left))
 	
@@ -57,10 +57,10 @@ func update_highlights(slot: int) -> void:
 			return
 	
 func play_sound_on_item_clicked(item: String) -> void:
-	if ["diagonal", "attack2", "all_diagonals", "all_horizontals", "attack"].has(item):
+	if ["diagonal", "attack_two", "all_diagonals", "all_horizontals", "attack"].has(item):
 		SFX.play(SFX.Id.GLASS_TAP)
 		SFX.play(SFX.Id.METAL_TAP)
-	if ["attack4", "knight"].has(item):
+	if ["attack_four", "knight"].has(item):
 		SFX.play(SFX.Id.WOOD)
 	else:
 		SFX.play(SFX.Id.WOOD)
@@ -71,12 +71,12 @@ func _on_pause_button_pressed() -> void:
 	%Settings.visible = true
 
 func _attacks_changed() -> void:
-	if Constants.WEAPON_SPRITES.get(GameState.attacks[0]) != null:
-		%FirstAttack.texture_normal = Constants.WEAPON_SPRITES[GameState.attacks[0]]
-	if Constants.WEAPON_SPRITES.get(GameState.attacks[1]) != null:
-		%SecondAttack.texture_normal = Constants.WEAPON_SPRITES[GameState.attacks[1]]
-	if Constants.WEAPON_SPRITES.get(GameState.attacks[2]) != null:
-		%ThirdAttack.texture_normal = Constants.WEAPON_SPRITES[GameState.attacks[2]]
+	if Constants.ITEM_SPRITES.get(GameState.attacks[0]) != null:
+		%FirstAttack.texture_normal = Constants.ITEM_SPRITES[GameState.attacks[0]]
+	if Constants.ITEM_SPRITES.get(GameState.attacks[1]) != null:
+		%SecondAttack.texture_normal = Constants.ITEM_SPRITES[GameState.attacks[1]]
+	if Constants.ITEM_SPRITES.get(GameState.attacks[2]) != null:
+		%ThirdAttack.texture_normal = Constants.ITEM_SPRITES[GameState.attacks[2]]
 	
 func _on_submit_attack_pressed() -> void:
 	RoundManager.attacks_left -= 1

@@ -19,3 +19,15 @@ How this was built (if you're interested):
 	and each "degree" around the circle representing a column. Thus, each object (whether that be
 	an enemy or a player) is stored in an array. When the player or enemy moves, the array is 
 	updated to match the current state of the board.
+	
+Credits:
+	Programmers:
+		Theophylaktos
+		Alkinyx
+		EdCode
+	Artists:
+		rota-fortunae
+		goldjinn__
+		lockedrock3
+	Musicians:
+		epiderspider

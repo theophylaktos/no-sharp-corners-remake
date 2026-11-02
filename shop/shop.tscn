@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://bktekranctyxx"]
+
+[ext_resource type="Script" uid="uid://blunbow5vujey" path="res://shop/shop.gd" id="1_q4g17"]
+[ext_resource type="Texture2D" uid="uid://cmucgsum7x5gr" path="res://assets/art/shop/shopmenu.png" id="2_2wf2a"]
+[ext_resource type="Shader" uid="uid://rw2pemweygio" path="res://shop_gradient.gdshader" id="3_xad5q"]
+[ext_resource type="Shader" uid="uid://c0jih7pwrhu4p" path="res://level/outline.gdshader" id="4_ljlg5"]
+[ext_resource type="Texture2D" uid="uid://1iobcrs1uqin" path="res://assets/art/ui/leave_button.png" id="6_mmyc1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7bva4"]
+shader = ExtResource("3_xad5q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fngjv"]
+resource_local_to_scene = true
+shader = ExtResource("4_ljlg5")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/is_outlined = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dl6xb"]
+shader = ExtResource("4_ljlg5")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/is_outlined = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2oro"]
+shader = ExtResource("4_ljlg5")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/is_outlined = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gy7ao"]
+shader = ExtResource("4_ljlg5")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/is_outlined = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4g17"]
+shader = ExtResource("4_ljlg5")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/is_outlined = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wf2a"]
+shader = ExtResource("4_ljlg5")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/is_outlined = true
+
+[node name="Shop" type="Control" unique_id=1807242219]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q4g17")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1252561751]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_2wf2a")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=548884782]
+material = SubResource("ShaderMaterial_7bva4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Options" type="Node" parent="." unique_id=1407742160]
+
+[node name="FirstOption" type="TextureButton" parent="Options" unique_id=1584457012]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_fngjv")
+offset_left = 37.0
+offset_top = 98.0
+offset_right = 71.0
+offset_bottom = 132.0
+
+[node name="SecondOption" type="TextureButton" parent="Options" unique_id=473999103]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_dl6xb")
+offset_left = 73.0
+offset_top = 98.0
+offset_right = 107.0
+offset_bottom = 132.0
+
+[node name="ThirdOption" type="TextureButton" parent="Options" unique_id=115421882]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_a2oro")
+offset_left = 109.0
+offset_top = 98.0
+offset_right = 143.0
+offset_bottom = 132.0
+
+[node name="Slots" type="Node" parent="." unique_id=268963991]
+
+[node name="FirstSlot" type="TextureButton" parent="Slots" unique_id=541747785]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_gy7ao")
+offset_left = 203.0
+offset_top = 11.0
+offset_right = 237.0
+offset_bottom = 45.0
+
+[node name="SecondSlot" type="TextureButton" parent="Slots" unique_id=1077377960]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_q4g17")
+offset_left = 203.0
+offset_top = 46.0
+offset_right = 237.0
+offset_bottom = 80.0
+
+[node name="ThirdSlot" type="TextureButton" parent="Slots" unique_id=782600690]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_2wf2a")
+offset_left = 203.0
+offset_top = 81.0
+offset_right = 237.0
+offset_bottom = 115.0
+
+[node name="ExitButton" type="TextureButton" parent="." unique_id=249115123]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 101.0
+offset_right = 209.0
+offset_bottom = 141.0
+texture_normal = ExtResource("6_mmyc1")
+
+[connection signal="pressed" from="Options/FirstOption" to="." method="_on_first_option_pressed"]
+[connection signal="pressed" from="Options/SecondOption" to="." method="_on_second_option_pressed"]
+[connection signal="pressed" from="Options/ThirdOption" to="." method="_on_third_option_pressed"]
+[connection signal="pressed" from="Slots/FirstSlot" to="." method="_on_first_slot_pressed"]
+[connection signal="pressed" from="Slots/SecondSlot" to="." method="_on_second_slot_pressed"]
+[connection signal="pressed" from="Slots/ThirdSlot" to="." method="_on_third_slot_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
