@@ -3,6 +3,8 @@ class_name RotateableObject
 
 @export var local: Node2D
 
+var can_move: bool = false 
+
 ## X is the ring, Y is the degree
 @export var tile_coordinates: Vector2i = Vector2i(-1, -1):
 	set(new_value):

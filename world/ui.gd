@@ -4,8 +4,8 @@ func _ready() -> void:
 	RoundManager.selected_weapon_changed.connect(func(): update_highlights(RoundManager.selected_attack))
 	_attacks_changed()
 	GameState.health_changed.connect(func(): play_health_loss_animation(GameState.health_left))
-	RoundManager.moves_changed.connect(func(): play_move_loss_animation(RoundManager.moves_left))
-	RoundManager.attacks_changed.connect(func(): play_attack_loss_animation(RoundManager.attacks_left))
+	RoundManager.moves_changed.connect(func(): update_moves(RoundManager.moves_left))
+	RoundManager.attacks_changed.connect(func(): update_attacks(RoundManager.attacks_left))
 	
 	GameState.health_max_changed.connect(func(): update_max_health(GameState.health_max))
 	GameState.moves_max_changed.connect(func(): update_max_moves(GameState.moves_max))
@@ -110,22 +110,27 @@ func play_health_loss_animation(heart: int) -> void:
 	var sprite: AnimatedSprite2D = $HeartIcons.get_child(heart - 1)
 	sprite.play("drain")
 	
-func play_move_loss_animation(move: int) -> void:
-	match move:
-		3:
-			return
-		2, 1, 0:
-			var sprite: AnimatedSprite2D = $MoveIcons.get_child(move)
-			sprite.play("used")
-		0:
+func update_moves(move: int) -> void:
+	if move == GameState.moves_max:
+		for sprite in $MoveIcons.get_children():
+			sprite.play("idle")
+	if move < GameState.moves_max:
+		var sprite: AnimatedSprite2D = $MoveIcons.get_child(move)
+		sprite.play("used")
+	if move == 0:
 			_on_first_attack_pressed()
-func play_attack_loss_animation(attack: int) -> void:
-	match attack:
-		0:
-			var sprite: AnimatedSprite2D = $AttackIcons.get_child(attack)
-			sprite.play("used")
-			update_highlights(-1)
-			switch_attacks_disabled(true)
+	
+func update_attacks(attack: int) -> void:
+	if attack == GameState.moves_max:
+		for sprite in $Icons.get_children():
+			sprite.play("idle")
+	if attack < GameState.attacks_max:
+		var sprite: AnimatedSprite2D = $MoveIcons.get_child(attack)
+		sprite.play("used")
+	if attack == 0:
+		update_highlights(-1)
+		switch_attacks_disabled(true)
+		LevelManager.clear_all_player_attack_segments()
 	
 func switch_attacks_disabled(switch: bool):
 	%FirstAttack.disabled = switch

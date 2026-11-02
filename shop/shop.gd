@@ -134,7 +134,6 @@ func give_item():
 		10:
 			GameState.attacks[replaced] = shop[choices[choice]]
 		11:
-			print("hi")
 			GameState.attacks[replaced] = shop[choices[choice]]
 
 

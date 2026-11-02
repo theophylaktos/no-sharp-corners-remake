@@ -13,6 +13,8 @@ signal change_to_enemy_attack
 		match new_value:
 			"player_move":
 				change_to_player_move.emit()
+				moves_left = GameState.moves_max
+				attacks_left = GameState.attacks_max
 			"player_attack":
 				change_to_player_attack.emit()
 			"enemy_attack":
@@ -159,9 +161,9 @@ func enemy_attacks():
 		for degree in LevelManager.segments[0].size():
 			var node = LevelManager.object_tile_coordinates[ring][degree]
 			if node is Enemy:
-				print("hi")
 				enemy_attack(node)
-
+	enemy_moves()
+	
 func enemy_attack(node: Enemy):
 	for attack in AttackPatterns.enemy_attack_patterns[node.enemy_type]:
 		var attack_position: Vector2i = attack + node.tile_coordinates
@@ -175,3 +177,37 @@ func enemy_attack(node: Enemy):
 	node.play_attack()
 	await node.animation_finshed
 	node.play_idle()
+
+func enemy_moves():
+	phase = "enemy_move"
+	for ring in LevelManager.segments.size():
+		for degree in LevelManager.segments[0].size():
+			if LevelManager.object_tile_coordinates[ring][degree] != null:
+				if(LevelManager.object_tile_coordinates[ring][degree] is Enemy):
+					LevelManager.object_tile_coordinates[ring][degree].can_move = true;
+	
+	for ring in LevelManager.segments.size():
+		for degree in LevelManager.segments[0].size():
+			var node = LevelManager.object_tile_coordinates[ring][degree]
+			if(node != null and node is Enemy and node.can_move):
+				node.can_move = false
+				var mover : int = randi_range(0,3)
+				match mover:
+					0:
+						if( ring < 2 and LevelManager.object_tile_coordinates[ring+1][degree] == null):
+							node.tile_coordinates = Vector2i(node.tile_coordinates.x, node.tile_coordinates.y + 1)
+							node.play_enemy_sound("move")
+					1:
+						if(ring > 0 and LevelManager.object_tile_coordinates[ring-1][degree] == null):
+							node.tile_coordinates = Vector2i(node.tile_coordinates.x, node.tile_coordinates.y - 1)
+					2:
+						if(LevelManager.object_tile_coordinates[ring][(degree+1)%8]==null):
+							node.tile_coordinates = Vector2i(node.tile_coordinates.x, (degree + 1) % 8)
+					3:
+						var new_degree: int = (degree-1) % 8
+						if(new_degree < 0):
+							new_degree = 8 - abs(new_degree)
+						if(LevelManager.object_tile_coordinates[ring][new_degree]==null):
+							node.tile_coordinates = Vector2i(node.tile_coordinates.x, new_degree)
+	LevelManager.refresh_enemy_highlights()
+	phase = "player_move"
