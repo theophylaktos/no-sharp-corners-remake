@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bw4vaypwe3ab8"]
+
+[ext_resource type="AudioStream" uid="uid://dt3orovt8aiso" path="res://assets/sounds/music/revolution_battle_theme.ogg" id="1_q3wc6"]
+
+[node name="Music" type="AudioStreamPlayer" unique_id=1001284953]
+stream = ExtResource("1_q3wc6")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

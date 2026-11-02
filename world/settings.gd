@@ -11,13 +11,13 @@ func _ready():
 	change_bus_volume("Music", GlobalSettings.music_volume)
 	change_bus_volume("SFX", GlobalSettings.sfx_volume)
 	
-func _on_master_h_slider_value_changed(value):
+func _on_master_slider_value_changed(value):
 	change_bus_volume("Master", value)
 
-func _on_music_h_slider_value_changed(value):
+func _on_music_slider_value_changed(value):
 	change_bus_volume("Music", value)
 
-func _on_sfx_h_slider_value_changed(value):
+func _on_sfx_slider_value_changed(value):
 	change_bus_volume("SFX", value)
 
 func change_bus_volume(bus, linear_value):

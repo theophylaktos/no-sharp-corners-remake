@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://nngff4e483na" path="res://assets/art/ui/play_button_hover.png" id="4_6at21"]
 [ext_resource type="Texture2D" uid="uid://dommt436ggx45" path="res://assets/art/ui/settings_button.png" id="5_og6xe"]
 [ext_resource type="Texture2D" uid="uid://63sqk3log45b" path="res://assets/art/ui/settings_button_hover.png" id="6_mvfl2"]
+[ext_resource type="Script" uid="uid://b4vj6dplklpri" path="res://world/settings.gd" id="8_kwfav"]
+[ext_resource type="Shader" uid="uid://cjce3iwe2baoe" path="res://shaders/vignette.gdshader" id="9_n70vs"]
+[ext_resource type="Texture2D" uid="uid://cebwyqk5ioth5" path="res://assets/art/settings/settings_with_slime.png" id="10_tr6y3"]
+[ext_resource type="Texture2D" uid="uid://dxc5odiqa1lnj" path="res://assets/art/settings/settings_x.png" id="11_vj6np"]
+[ext_resource type="Theme" uid="uid://db55p8fs1nvfa" path="res://settings_theme.tres" id="14_ie3af"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvn4f"]
 atlas = ExtResource("1_6tl50")
@@ -29,6 +34,9 @@ animations = [{
 "name": &"default",
 "speed": 4.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ifnh7"]
+shader = ExtResource("9_n70vs")
 
 [node name="Menu" type="Control" unique_id=874558947]
 layout_mode = 3
@@ -64,6 +72,78 @@ offset_bottom = 113.0
 texture_normal = ExtResource("5_og6xe")
 texture_hover = ExtResource("6_mvfl2")
 
+[node name="Settings" type="Control" parent="." unique_id=1441174686]
+unique_name_in_owner = true
+z_index = 1
+anchors_preset = 0
+offset_right = 240.0
+offset_bottom = 135.0
+script = ExtResource("8_kwfav")
+
+[node name="Vignette" type="ColorRect" parent="Settings" unique_id=779233289]
+material = SubResource("ShaderMaterial_ifnh7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="TextureRect" parent="Settings" unique_id=1740479372]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 135.0
+texture = ExtResource("10_tr6y3")
+
+[node name="CloseButton" type="TextureButton" parent="Settings" unique_id=251303352]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 11.0
+offset_right = 227.0
+offset_bottom = 24.0
+texture_normal = ExtResource("11_vj6np")
+
+[node name="MasterSlider" type="HSlider" parent="Settings" unique_id=1230664355]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 45.0
+offset_right = 181.0
+offset_bottom = 61.0
+theme = ExtResource("14_ie3af")
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[node name="MusicSlider" type="HSlider" parent="Settings" unique_id=490895439]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 67.0
+offset_right = 181.0
+offset_bottom = 83.0
+theme = ExtResource("14_ie3af")
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[node name="SFXSlider" type="HSlider" parent="Settings" unique_id=1484512557]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 89.0
+offset_right = 181.0
+offset_bottom = 105.0
+theme = ExtResource("14_ie3af")
+max_value = 1.0
+step = 0.0
+value = 0.5
+
 [connection signal="mouse_entered" from="PlayButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="Settings/CloseButton" to="Settings" method="button_mouse_entered"]
+[connection signal="pressed" from="Settings/CloseButton" to="Settings" method="button_pressed"]
+[connection signal="pressed" from="Settings/CloseButton" to="Settings" method="_on_close_button_pressed"]
+[connection signal="value_changed" from="Settings/MasterSlider" to="Settings" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Settings/MusicSlider" to="Settings" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Settings/SFXSlider" to="Settings" method="_on_sfx_slider_value_changed"]

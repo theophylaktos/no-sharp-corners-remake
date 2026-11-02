@@ -105,3 +105,12 @@ func refresh_enemy_highlights():
 		for d in object_tile_coordinates[0].size():
 			if object_tile_coordinates[r][d] != null and object_tile_coordinates[r][d] is Enemy:
 				object_tile_coordinates[r][d].highlight_attack()
+
+func count_enemies() -> int:
+	var count: int = 0
+	for ring in object_tile_coordinates.size():
+		for degree in object_tile_coordinates[0].size():
+			if object_tile_coordinates[ring][degree] != null:
+				if object_tile_coordinates[ring][degree] is Enemy:
+					count += 1
+	return count

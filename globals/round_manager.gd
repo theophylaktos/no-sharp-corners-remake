@@ -155,6 +155,9 @@ func damage_enemies():
 					await get_tree().create_timer(1).timeout
 	if attacks_left <= 0:
 		LevelManager.clear_all_player_attack_segments()
+		
+	if LevelManager.count_enemies() == 0:
+		get_tree().change_scene_to_file("uid://bktekranctyxx")
 
 func enemy_attacks():
 	for ring in LevelManager.segments.size():
@@ -195,19 +198,16 @@ func enemy_moves():
 				match mover:
 					0:
 						if( ring < 2 and LevelManager.object_tile_coordinates[ring+1][degree] == null):
-							node.tile_coordinates = Vector2i(node.tile_coordinates.x, node.tile_coordinates.y + 1)
+							node.tile_coordinates = Vector2i(ring, degree + 1)
 							node.play_enemy_sound("move")
 					1:
 						if(ring > 0 and LevelManager.object_tile_coordinates[ring-1][degree] == null):
-							node.tile_coordinates = Vector2i(node.tile_coordinates.x, node.tile_coordinates.y - 1)
+							node.tile_coordinates = Vector2i(ring, degree - 1)
 					2:
-						if(LevelManager.object_tile_coordinates[ring][(degree+1)%8]==null):
-							node.tile_coordinates = Vector2i(node.tile_coordinates.x, (degree + 1) % 8)
+						if(LevelManager.object_tile_coordinates[ring][(degree+ 1 ) % 8] == null):
+							node.tile_coordinates = Vector2i(ring, (degree + 1) % 8)
 					3:
-						var new_degree: int = (degree-1) % 8
-						if(new_degree < 0):
-							new_degree = 8 - abs(new_degree)
-						if(LevelManager.object_tile_coordinates[ring][new_degree]==null):
-							node.tile_coordinates = Vector2i(node.tile_coordinates.x, new_degree)
+						if(LevelManager.object_tile_coordinates[ring][posmod(degree, 8)] == null):
+							node.tile_coordinates = Vector2i(ring, posmod(degree, 8))
 	LevelManager.refresh_enemy_highlights()
 	phase = "player_move"

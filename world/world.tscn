@@ -108,7 +108,7 @@ texture_disabled = ExtResource("13_p2iis")
 [node name="Settings" type="Control" parent="." unique_id=6689752]
 unique_name_in_owner = true
 visible = false
-z_index = 1
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_left = -65.0
@@ -194,3 +194,6 @@ value = 0.5
 [connection signal="mouse_entered" from="Settings/ExitButton" to="Settings" method="button_mouse_entered"]
 [connection signal="pressed" from="Settings/ExitButton" to="Settings" method="button_pressed"]
 [connection signal="pressed" from="Settings/ExitButton" to="Settings" method="_on_exit_button_pressed"]
+[connection signal="value_changed" from="Settings/MasterSlider" to="Settings" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Settings/MusicSlider" to="Settings" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Settings/SFXSlider" to="Settings" method="_on_sfx_slider_value_changed"]
