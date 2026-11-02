@@ -43,5 +43,5 @@ func _process(_delta: float) -> void:
 		print(LevelManager.object_tile_coordinates[0])
 		print(LevelManager.object_tile_coordinates[1])
 		print(LevelManager.object_tile_coordinates[2])
-		print() 
+		print()
 		debug_pressed.emit()

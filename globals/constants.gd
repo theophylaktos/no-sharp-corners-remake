@@ -11,7 +11,8 @@ const HEART_ICON = preload("uid://csx7htciqrpvj")
 const MOVE_ICON = preload("uid://yoxa5u2nhrm")
 const ATTACK_ICON = preload("uid://b5je2lv2vomea")
 
-const WEAPON_SPRITES: Dictionary[String, CompressedTexture2D] = {
+const ITEM_SPRITES: Dictionary[String, CompressedTexture2D] = {
+	"": preload("uid://bmfaeb5wwlfty"),
 	"diagonal": preload("uid://d30hood7b3jia"),
 	"attack2": preload("uid://bwn8ypto7o7jl"),
 	"attack4": preload("uid://ddlottmvshgpf"),
@@ -19,6 +20,12 @@ const WEAPON_SPRITES: Dictionary[String, CompressedTexture2D] = {
 	"all_diagonals": preload("uid://cskr21f181ur"),
 	"all_horizontals": preload("uid://cop404wtgqx3h"),
 	"attack": preload("uid://b7ptnpwn3k0ni"),
+	
+	"heal_two": preload("uid://o37gts8apes7"),
+	"add_heart": preload("uid://bhut60woybcnx"),
+	"add_attack": preload("uid://kxkjsccpf7n6"),
+	"more_damage": preload("uid://b04xm6fdq5o5l"),
+	"add_move": preload("uid://bga5uw67eyhr1"),
 }
 
 const ENEMY_SPRITE_FRAMES: Dictionary[String, SpriteFrames] = {

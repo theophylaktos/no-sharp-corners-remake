@@ -6,6 +6,7 @@ signal change_to_player_move
 signal change_to_player_attack
 signal change_to_enemy_move
 signal change_to_enemy_attack
+
 @export var phase: String = "player_move":
 	set(new_value):
 		phase = new_value
@@ -14,10 +15,11 @@ signal change_to_enemy_attack
 				change_to_player_move.emit()
 			"player_attack":
 				change_to_player_attack.emit()
-			"enemy_move":
-				change_to_enemy_move.emit()
 			"enemy_attack":
 				change_to_enemy_attack.emit()
+				enemy_attacks()
+			"enemy_move":
+				change_to_enemy_move.emit()
 	
 var selected_attack: int = 0
 
@@ -41,7 +43,7 @@ signal attacks_changed
 		attacks_left = new_value
 		attacks_changed.emit()
 		if moves_left == 0:
-			phase = "enemy_move"
+			phase = "enemy_attack"
 
 signal debug_pressed
 
@@ -76,6 +78,9 @@ func _ready() -> void:
 	
 	PlayerInputs.submit_attack_pressed.connect(damage_enemies)
 	start_round()
+	
+func _process(delta: float) -> void:
+	LevelManager.refresh_enemy_highlights()
 	
 func _debug_pressed():
 	debug_pressed.emit()
@@ -152,5 +157,27 @@ func damage_enemies():
 						node.play_enemy_sound("Death")
 					node.health -= GameState.player_damage
 					await get_tree().create_timer(1).timeout
-	if moves_left <= 0:
+	if attacks_left <= 0:
 		LevelManager.clear_all_player_attack_segments()
+
+func enemy_attacks():
+	for ring in LevelManager.segments.size():
+		for degree in LevelManager.segments[0].size():
+			var node = LevelManager.object_tile_coordinates[ring][degree]
+			if node is Enemy:
+				print("hi")
+				enemy_attack(node)
+
+func enemy_attack(node: Enemy):
+	for attack in AttackPatterns.enemy_attack_patterns[node.enemy_type]:
+		var attack_position: Vector2i = attack + node.tile_coordinates
+		attack_position.y = posmod(attack_position.y, Constants.DEGREE_SIZE + 1)
+		
+		if attack_position.x < 0 or attack_position.x > 2:
+			continue
+		if LevelManager.object_tile_coordinates[attack_position.x][attack_position.y] != Player:
+			continue
+			
+	node.play_attack()
+	await node.animation_finshed
+	node.play_idle()

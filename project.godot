@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="no-sharp-corners-remake"
-run/main_scene="uid://cvhhrs1oj6hcn"
+run/main_scene="uid://d4bay6qjpeqgb"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://assets/icon.svg"
 

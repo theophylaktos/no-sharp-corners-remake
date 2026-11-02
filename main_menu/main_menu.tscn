@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d4bay6qjpeqgb"]
 
 [ext_resource type="Texture2D" uid="uid://w1j6qk5alwtr" path="res://assets/art/backgrounds/pause_screen.png" id="1_6tl50"]
+[ext_resource type="Script" uid="uid://nokxgtnulfyp" path="res://main_menu/main_menu.gd" id="1_t6bnd"]
 [ext_resource type="Texture2D" uid="uid://d1sy3x4x5ehay" path="res://assets/art/ui/play_button_press.png" id="2_t6bnd"]
 [ext_resource type="Texture2D" uid="uid://d1rmovu548lyp" path="res://assets/art/ui/play_button.png" id="3_ia84y"]
 [ext_resource type="Texture2D" uid="uid://nngff4e483na" path="res://assets/art/ui/play_button_hover.png" id="4_6at21"]
@@ -26,7 +27,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [node name="Menu" type="Control" unique_id=874558947]
@@ -36,10 +37,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_t6bnd")
 
-[node name="TextureRect" type="AnimatedSprite2D" parent="." unique_id=68475231]
-position = Vector2(120, 67.5)
+[node name="Background" type="AnimatedSprite2D" parent="." unique_id=68475231]
+position = Vector2(120, 67)
 sprite_frames = SubResource("SpriteFrames_7bva4")
+autoplay = "default"
+offset = Vector2(0, 0.5)
 
 [node name="PlayButton" type="TextureButton" parent="." unique_id=87932507]
 layout_mode = 0
@@ -59,3 +63,7 @@ offset_right = 228.0
 offset_bottom = 113.0
 texture_normal = ExtResource("5_og6xe")
 texture_hover = ExtResource("6_mvfl2")
+
+[connection signal="mouse_entered" from="PlayButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]

@@ -38,6 +38,7 @@ shader_parameter/is_outlined = true
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h74y2"]
+resource_local_to_scene = true
 shader = ExtResource("2_h74y2")
 shader_parameter/player_attack_enabled = false
 shader_parameter/enemy_attack_enabled = false
@@ -94,6 +95,7 @@ shader_parameter/max_red = 1.0
 shader_parameter/max_green = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krw8e"]
+resource_local_to_scene = true
 shader = ExtResource("2_h74y2")
 shader_parameter/player_attack_enabled = false
 shader_parameter/enemy_attack_enabled = false
@@ -150,6 +152,7 @@ shader_parameter/max_red = 1.0
 shader_parameter/max_green = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4vkke"]
+resource_local_to_scene = true
 shader = ExtResource("2_h74y2")
 shader_parameter/player_attack_enabled = false
 shader_parameter/enemy_attack_enabled = false

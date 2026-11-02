@@ -80,6 +80,8 @@ func random_empty_segment() -> Vector2i:
 	return empty_segments[randi_range(0, empty_segments.size() - 1)]
 
 func toggle_enemy_attack_segment(ring: int, degree: int, enabled: bool):
+	if segments[ring][degree] == null:
+		return
 	var material: ShaderMaterial = segments[ring][degree].get_material()
 	material.set_shader_parameter("enemy_attack_enabled", enabled)
 
@@ -95,7 +97,7 @@ func clear_all_player_attack_segments():
 func clear_all_enemy_attack_segments(): 
 	for ring in segments.size():
 		for degree in segments[0].size():
-			toggle_enemy_attack_segment(ring, degree, true)
+			toggle_enemy_attack_segment(ring, degree, false)
 	
 func refresh_enemy_highlights():
 	clear_all_enemy_attack_segments()

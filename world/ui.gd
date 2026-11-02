@@ -16,7 +16,7 @@ func _ready() -> void:
 	
 	$SubmitAttack.disabled = true
 	RoundManager.change_to_player_attack.connect(func(): $SubmitAttack.disabled = false)
-	RoundManager.change_to_enemy_move.connect(func(): $SubmitAttack.disabled = true)
+	RoundManager.change_to_enemy_attack.connect(func(): $SubmitAttack.disabled = true)
 	
 func _on_first_attack_pressed() -> void:
 	PlayerInputs.first_attack_pressed.emit()
